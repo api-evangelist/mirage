@@ -1,0 +1,20 @@
+openapi: 3.1.0
+info:
+  title: Mirage Video Audio health API
+  description: API for AI-powered video generation
+  version: 0.0.1
+tags:
+- name: health
+paths:
+  /health:
+    get:
+      tags:
+      - health
+      summary: Health Check
+      operationId: health_check_health_get
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}

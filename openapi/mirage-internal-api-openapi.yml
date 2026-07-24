@@ -1,0 +1,837 @@
+openapi: 3.1.0
+info:
+  title: Mirage Video Audio internal API
+  description: API for AI-powered video generation
+  version: 0.0.1
+tags:
+- name: internal
+paths:
+  /internal/api-keys/generate:
+    post:
+      tags:
+      - internal
+      summary: Create Api Key
+      description: 'Create a new API key for a user.
+
+
+        This endpoint requires internal API key authentication.
+
+        The returned API key should be saved securely as it cannot be retrieved again.'
+      operationId: create_api_key_internal_api_keys_generate_post
+      parameters:
+      - name: x-api-key
+        in: header
+        required: true
+        schema:
+          type: string
+          description: Internal API Key for authentication
+          title: X-Api-Key
+        description: Internal API Key for authentication
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateApiKeyRequest'
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreateApiKeyResponse'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /internal/api-keys/{key_id}:
+    post:
+      tags:
+      - internal
+      summary: Revoke Api Key
+      operationId: revoke_api_key_internal_api_keys__key_id__post
+      parameters:
+      - name: key_id
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Key Id
+      - name: x-api-key
+        in: header
+        required: true
+        schema:
+          type: string
+          description: Internal API Key for authentication
+          title: X-Api-Key
+        description: Internal API Key for authentication
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: true
+                title: Response Revoke Api Key Internal Api Keys  Key Id  Post
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /internal/api-keys/user/{user_id}:
+    get:
+      tags:
+      - internal
+      summary: List User Api Keys
+      operationId: list_user_api_keys_internal_api_keys_user__user_id__get
+      parameters:
+      - name: user_id
+        in: path
+        required: true
+        schema:
+          type: string
+          title: User Id
+      - name: org_id
+        in: query
+        required: false
+        schema:
+          anyOf:
+          - type: string
+          - type: 'null'
+          description: Organization ID to filter by
+          title: Org Id
+        description: Organization ID to filter by
+      - name: x-api-key
+        in: header
+        required: true
+        schema:
+          type: string
+          description: Internal API Key for authentication
+          title: X-Api-Key
+        description: Internal API Key for authentication
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ApiKeyInfo'
+                title: Response List User Api Keys Internal Api Keys User  User Id  Get
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /internal/videos:
+    post:
+      tags:
+      - internal
+      summary: Create Video
+      operationId: create_video_internal_videos_post
+      parameters:
+      - name: x-api-key
+        in: header
+        required: true
+        schema:
+          type: string
+          description: API key or internal API key for authentication
+          title: X-Api-Key
+        description: API key or internal API key for authentication
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Body_create_video_internal_videos_post'
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MAVideo'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /internal/videos/{video_id}:
+    get:
+      tags:
+      - internal
+      summary: Get Video
+      operationId: get_video_internal_videos__video_id__get
+      parameters:
+      - name: video_id
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Video Id
+      - name: x-api-key
+        in: header
+        required: true
+        schema:
+          type: string
+          description: API key or internal API key for authentication
+          title: X-Api-Key
+        description: API key or internal API key for authentication
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MAVideo'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /internal/rate-limits/overrides:
+    post:
+      tags:
+      - internal
+      summary: Create Rate Limit Override
+      description: "Create a new rate limit override for an org or user.\n\nThis endpoint requires internal API key authentication.\n\nExample request:\n```json\n{\n  \"identifier\": \"org:org_123\",\n  \"endpointLimits\": {\n    \"generation\": {\n      \"maxTokens\": 100,\n      \"refillRatePerSecond\": 5.0\n    },\n    \"status\": {\n      \"maxTokens\": 200,\n      \"refillRatePerSecond\": 50.0\n    }\n  },\n  \"note\": \"Enterprise plan with higher limits\"\n}\n```"
+      operationId: create_rate_limit_override_internal_rate_limits_overrides_post
+      parameters:
+      - name: x-api-key
+        in: header
+        required: true
+        schema:
+          type: string
+          description: Internal API Key for authentication
+          title: X-Api-Key
+        description: Internal API Key for authentication
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RateLimitOverrideCreateRequest'
+      responses:
+        '201':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RateLimitOverrideResponse'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+    get:
+      tags:
+      - internal
+      summary: List Rate Limit Overrides
+      description: 'List all rate limit overrides, optionally filtered by type.
+
+
+        Query parameters:
+
+        - override_type: ''org'' or ''user'' to filter results
+
+        - limit: Maximum number of results (default: 100, max: 1000)'
+      operationId: list_rate_limit_overrides_internal_rate_limits_overrides_get
+      parameters:
+      - name: override_type
+        in: query
+        required: false
+        schema:
+          anyOf:
+          - type: string
+          - type: 'null'
+          description: 'Filter by type: ''org'' or ''user''. If not provided, returns all overrides.'
+          title: Override Type
+        description: 'Filter by type: ''org'' or ''user''. If not provided, returns all overrides.'
+      - name: limit
+        in: query
+        required: false
+        schema:
+          type: integer
+          maximum: 1000
+          minimum: 1
+          description: Maximum number of results
+          default: 100
+          title: Limit
+        description: Maximum number of results
+      - name: x-api-key
+        in: header
+        required: true
+        schema:
+          type: string
+          description: Internal API Key for authentication
+          title: X-Api-Key
+        description: Internal API Key for authentication
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/RateLimitOverrideResponse'
+                title: Response List Rate Limit Overrides Internal Rate Limits Overrides Get
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /internal/rate-limits/overrides/{identifier}:
+    get:
+      tags:
+      - internal
+      summary: Get Rate Limit Override
+      description: 'Get a rate limit override by identifier.
+
+
+        Identifier format: ''org:<org_id>'' or ''user:<user_id>''
+
+
+        Example: /internal/rate-limits/overrides/org:org_123'
+      operationId: get_rate_limit_override_internal_rate_limits_overrides__identifier__get
+      parameters:
+      - name: identifier
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Identifier
+      - name: x-api-key
+        in: header
+        required: true
+        schema:
+          type: string
+          description: Internal API Key for authentication
+          title: X-Api-Key
+        description: Internal API Key for authentication
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RateLimitOverrideResponse'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+    put:
+      tags:
+      - internal
+      summary: Update Rate Limit Override
+      description: 'Update an existing rate limit override.
+
+
+        Only the fields provided in the request will be updated.'
+      operationId: update_rate_limit_override_internal_rate_limits_overrides__identifier__put
+      parameters:
+      - name: identifier
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Identifier
+      - name: x-api-key
+        in: header
+        required: true
+        schema:
+          type: string
+          description: Internal API Key for authentication
+          title: X-Api-Key
+        description: Internal API Key for authentication
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RateLimitOverrideUpdateRequest'
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RateLimitOverrideResponse'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+    delete:
+      tags:
+      - internal
+      summary: Delete Rate Limit Override
+      description: 'Delete a rate limit override.
+
+
+        After deletion, the org/user will fall back to default rate limits.'
+      operationId: delete_rate_limit_override_internal_rate_limits_overrides__identifier__delete
+      parameters:
+      - name: identifier
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Identifier
+      - name: x-api-key
+        in: header
+        required: true
+        schema:
+          type: string
+          description: Internal API Key for authentication
+          title: X-Api-Key
+        description: Internal API Key for authentication
+      responses:
+        '204':
+          description: Successful Response
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /internal/rate-limits/overrides/{identifier}/invalidate-cache:
+    post:
+      tags:
+      - internal
+      summary: Invalidate Rate Limit Override Cache
+      description: 'Manually invalidate the cache for a specific rate limit override.
+
+
+        Useful for debugging or forcing a cache refresh.'
+      operationId: invalidate_rate_limit_override_cache_internal_rate_limits_overrides__identifier__invalidate_cache_post
+      parameters:
+      - name: identifier
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Identifier
+      - name: x-api-key
+        in: header
+        required: true
+        schema:
+          type: string
+          description: Internal API Key for authentication
+          title: X-Api-Key
+        description: Internal API Key for authentication
+      responses:
+        '204':
+          description: Successful Response
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+components:
+  schemas:
+    CreateApiKeyRequest:
+      properties:
+        name:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Name
+          description: Optional friendly name for the key
+      type: object
+      title: CreateApiKeyRequest
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          type: array
+          title: Detail
+      type: object
+      title: HTTPValidationError
+    RateLimitOverrideResponse:
+      properties:
+        identifier:
+          type: string
+          title: Identifier
+        endpointLimits:
+          $ref: '#/components/schemas/EndpointLimitsOverride'
+        createdAt:
+          type: string
+          format: date-time
+          title: Createdat
+        createdBy:
+          type: string
+          title: Createdby
+        updatedAt:
+          anyOf:
+          - type: string
+            format: date-time
+          - type: 'null'
+          title: Updatedat
+        updatedBy:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Updatedby
+        note:
+          type: string
+          title: Note
+          default: ''
+      type: object
+      required:
+      - identifier
+      - endpointLimits
+      - createdAt
+      - createdBy
+      title: RateLimitOverrideResponse
+      description: Response containing rate limit override information
+    RateLimitOverrideUpdateRequest:
+      properties:
+        endpointLimits:
+          anyOf:
+          - $ref: '#/components/schemas/EndpointLimitsOverride'
+          - type: 'null'
+        note:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Note
+      type: object
+      title: RateLimitOverrideUpdateRequest
+      description: Request to update a rate limit override
+    ValidationError:
+      properties:
+        loc:
+          items:
+            anyOf:
+            - type: string
+            - type: integer
+          type: array
+          title: Location
+        msg:
+          type: string
+          title: Message
+        type:
+          type: string
+          title: Error Type
+        input:
+          title: Input
+        ctx:
+          type: object
+          title: Context
+      type: object
+      required:
+      - loc
+      - msg
+      - type
+      title: ValidationError
+    Body_create_video_internal_videos_post:
+      properties:
+        input_media_files:
+          anyOf:
+          - items:
+              type: string
+              contentMediaType: application/octet-stream
+            type: array
+          - type: 'null'
+          title: Input Media Files
+          description: 'Optional media files to seed into the generated video. Supported media: images, videos, and audio.'
+        input_media_file_descriptions:
+          anyOf:
+          - items:
+              type: string
+            type: array
+          - type: 'null'
+          title: Input Media File Descriptions
+          description: Optional descriptions aligned by index with input_media_files.
+        input_media_urls:
+          anyOf:
+          - items:
+              type: string
+            type: array
+          - type: 'null'
+          title: Input Media Urls
+          description: Optional HTTP(S) media URLs to seed into the generated video.
+        input_media_url_descriptions:
+          anyOf:
+          - items:
+              type: string
+            type: array
+          - type: 'null'
+          title: Input Media Url Descriptions
+          description: Optional descriptions aligned by index with input_media_urls.
+        prompt:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Prompt
+          description: Optional generation prompt.
+        video_style_id:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Video Style Id
+          description: Optional video style ID.
+      type: object
+      title: Body_create_video_internal_videos_post
+    EndpointLimitsOverride:
+      properties:
+        generation:
+          anyOf:
+          - $ref: '#/components/schemas/EndpointRateLimitConfig'
+          - type: 'null'
+        status:
+          anyOf:
+          - $ref: '#/components/schemas/EndpointRateLimitConfig'
+          - type: 'null'
+        videoCaptionsSubmit:
+          anyOf:
+          - $ref: '#/components/schemas/EndpointRateLimitConfig'
+          - type: 'null'
+        metaTextOverlaySubmit:
+          anyOf:
+          - $ref: '#/components/schemas/EndpointRateLimitConfig'
+          - type: 'null'
+        metaTextOverlayPoll:
+          anyOf:
+          - $ref: '#/components/schemas/EndpointRateLimitConfig'
+          - type: 'null'
+      type: object
+      title: EndpointLimitsOverride
+      description: Rate limit overrides for specific endpoints
+    MAVideo:
+      properties:
+        id:
+          type: string
+          title: Id
+          description: Video generation job ID
+          examples:
+          - video_abc123def456
+        object:
+          type: string
+          const: video
+          title: Object
+          default: video
+        status:
+          type: string
+          enum:
+          - PROCESSING
+          - COMPLETE
+          - FAILED
+          - CANCELLED
+          title: Status
+          description: Current state of the video
+          examples:
+          - COMPLETE
+        created_at:
+          type: integer
+          title: Created At
+          description: When the video was created (unix timestamp)
+          examples:
+          - 1730822400
+        completed_at:
+          anyOf:
+          - type: integer
+          - type: 'null'
+          title: Completed At
+          description: When processing completed (unix timestamp)
+          examples:
+          - 1730822520
+        progress:
+          anyOf:
+          - type: integer
+          - type: 'null'
+          title: Progress
+          description: Progress percentage (0-100)
+          examples:
+          - 100
+        error:
+          anyOf:
+          - $ref: '#/components/schemas/MAVideoError'
+          - type: 'null'
+          description: Error details if status is FAILED
+          examples:
+          - null
+        model:
+          anyOf:
+          - type: string
+            const: mirage-video-1-latest
+          - type: 'null'
+          title: Model
+          description: Model used for generation (only for source='generation')
+          examples:
+          - mirage-video-1-latest
+        source_video_id:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Source Video Id
+          description: The input video that was captioned (only for source='caption')
+          examples:
+          - video_abc123def456
+        caption_template_id:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Caption Template Id
+          description: Caption style template used (only for source='caption')
+          examples:
+          - ctpl_123456789abcdefg
+        share_link_url:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Share Link Url
+          description: Public share link for a completed internal video, when enabled.
+          examples:
+          - https://captions.ai/share/eyJ2Ijox.../share-token
+        video_id:
+          type: string
+          title: Video Id
+          description: '[Deprecated] Use "id" instead.'
+          deprecated: true
+      type: object
+      required:
+      - id
+      - status
+      - created_at
+      - video_id
+      title: MAVideo
+      description: 'Represents a video object.
+
+
+        A video can be created via generation (an image appearance reference plus audio) or
+
+        captioning (adding captions to an existing video).'
+      examples:
+      - completed_at: 1730822520
+        created_at: 1730822400
+        model: mirage-video-1-latest
+        progress: 100
+        status: COMPLETE
+        video_id: video_abc123def456
+      - caption_template_id: ctpl_123456789abcdefg
+        created_at: 1730822600
+        progress: 50
+        source_video_id: video_abc123def456
+        status: PROCESSING
+        video_id: video_xyz789
+    MAVideoError:
+      properties:
+        code:
+          type: string
+          title: Code
+          description: Error code
+          examples:
+          - rate_limit_exceeded
+        message:
+          type: string
+          title: Message
+          description: Error message
+          examples:
+          - Rate limit exceeded. Please try again later.
+      type: object
+      required:
+      - code
+      - message
+      title: MAVideoError
+      description: Error payload that explains why generation failed, if applicable
+    EndpointRateLimitConfig:
+      properties:
+        max_tokens:
+          type: integer
+          title: Max Tokens
+        refill_rate_per_second:
+          type: number
+          title: Refill Rate Per Second
+      type: object
+      required:
+      - max_tokens
+      - refill_rate_per_second
+      title: EndpointRateLimitConfig
+      description: Rate limit configuration for a specific endpoint
+    RateLimitOverrideCreateRequest:
+      properties:
+        identifier:
+          type: string
+          title: Identifier
+          description: Identifier in format 'org:<id>' or 'user:<id>'
+          examples:
+          - org:org_123
+          - user:user_456
+        endpointLimits:
+          $ref: '#/components/schemas/EndpointLimitsOverride'
+          description: Rate limit overrides per endpoint
+        note:
+          type: string
+          title: Note
+          description: Optional note about why this override exists
+          default: ''
+      type: object
+      required:
+      - identifier
+      - endpointLimits
+      title: RateLimitOverrideCreateRequest
+      description: Request to create a rate limit override
+    CreateApiKeyResponse:
+      properties:
+        api_key:
+          type: string
+          title: Api Key
+          description: The newly created API key (show only once)
+        key_id:
+          type: string
+          title: Key Id
+          description: The key ID for management purposes
+      type: object
+      required:
+      - api_key
+      - key_id
+      title: CreateApiKeyResponse
+    ApiKeyInfo:
+      properties:
+        key_id:
+          type: string
+          title: Key Id
+        name:
+          type: string
+          title: Name
+        created_at:
+          type: string
+          format: date-time
+          title: Created At
+        last_used_at:
+          anyOf:
+          - type: string
+            format: date-time
+          - type: 'null'
+          title: Last Used At
+        key_prefix:
+          type: string
+          title: Key Prefix
+        key_suffix:
+          type: string
+          title: Key Suffix
+      type: object
+      required:
+      - key_id
+      - name
+      - created_at
+      - last_used_at
+      - key_prefix
+      - key_suffix
+      title: ApiKeyInfo

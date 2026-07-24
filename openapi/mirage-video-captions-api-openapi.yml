@@ -1,0 +1,405 @@
+openapi: 3.1.0
+info:
+  title: Mirage Video Audio Video Captions API
+  description: API for AI-powered video generation
+  version: 0.0.1
+tags:
+- name: Video Captions
+paths:
+  /v1/videos/captions:
+    post:
+      tags:
+      - Video Captions
+      summary: Add Captions to a Video
+      description: 'Create a captioned video from either an uploaded video file or an existing video ID.
+
+
+        You must provide exactly one of:
+
+        - `video`: A video file upload (.mp4 or .mov), max 50mb
+
+        - `video_id`: An existing video ID to add captions to
+
+
+        If providing `video_id`, the source video must have status COMPLETE before it can be captioned.
+
+
+        To fetch the captioned video, use the `GET videos/{video_id}` endpoint.'
+      operationId: create_captioned_video_v1_videos_captions_post
+      parameters:
+      - name: x-api-key
+        in: header
+        required: true
+        schema:
+          type: string
+          description: API Key for authentication
+          title: X-Api-Key
+        description: API Key for authentication
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Body_create_captioned_video_v1_videos_captions_post'
+      responses:
+        '200':
+          description: Returns a Video object representing the captioning job
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MAVideo'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /v1/videos/captions/templates:
+    get:
+      tags:
+      - Video Captions
+      summary: List Caption Templates
+      description: 'List available caption style templates.
+
+
+        Returns a paginated list of templates that can be used when creating captioned videos.'
+      operationId: list_caption_templates_v1_videos_captions_templates_get
+      parameters:
+      - name: limit
+        in: query
+        required: false
+        schema:
+          type: integer
+          maximum: 100
+          minimum: 1
+          description: Max number of items to return
+          default: 20
+          title: Limit
+        description: Max number of items to return
+      - name: after
+        in: query
+        required: false
+        schema:
+          anyOf:
+          - type: string
+          - type: 'null'
+          description: Return items strictly after this template ID
+          title: After
+        description: Return items strictly after this template ID
+      - name: x-api-key
+        in: header
+        required: true
+        schema:
+          type: string
+          description: API Key for authentication
+          title: X-Api-Key
+        description: API Key for authentication
+      responses:
+        '200':
+          description: Returns a paginated list of available caption templates
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MACaptionTemplateList'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /v1/videos/captions/templates/{template_id}:
+    get:
+      tags:
+      - Video Captions
+      summary: Retrieve Caption Template
+      operationId: get_caption_template_v1_videos_captions_templates__template_id__get
+      parameters:
+      - name: template_id
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Template Id
+      - name: x-api-key
+        in: header
+        required: true
+        schema:
+          type: string
+          description: API Key for authentication
+          title: X-Api-Key
+        description: API Key for authentication
+      responses:
+        '200':
+          description: Returns a caption template
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MACaptionTemplate'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+components:
+  schemas:
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          type: array
+          title: Detail
+      type: object
+      title: HTTPValidationError
+    ValidationError:
+      properties:
+        loc:
+          items:
+            anyOf:
+            - type: string
+            - type: integer
+          type: array
+          title: Location
+        msg:
+          type: string
+          title: Message
+        type:
+          type: string
+          title: Error Type
+        input:
+          title: Input
+        ctx:
+          type: object
+          title: Context
+      type: object
+      required:
+      - loc
+      - msg
+      - type
+      title: ValidationError
+    MACaptionTemplateList:
+      properties:
+        data:
+          items:
+            $ref: '#/components/schemas/MACaptionTemplate'
+          type: array
+          title: Data
+          description: List of caption templates
+        object:
+          type: string
+          const: list
+          title: Object
+          default: list
+        has_more:
+          type: boolean
+          title: Has More
+          description: Whether there are more templates after this page
+      type: object
+      required:
+      - data
+      - has_more
+      title: MACaptionTemplateList
+      description: Paginated list of caption templates
+    Body_create_captioned_video_v1_videos_captions_post:
+      properties:
+        caption_template_id:
+          type: string
+          title: Caption Template Id
+          description: Caption style template ID
+          examples:
+          - ctpl_yvE0ZnYzEj6ClCD2ee1f
+        video:
+          anyOf:
+          - type: string
+            contentMediaType: application/octet-stream
+          - type: 'null'
+          title: Video
+          description: Video file to caption (MP4, MOV). Must be 9:16 aspect ratio. Max 50mb. Either `video` or `video_id` must be provided.
+        video_id:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Video Id
+          description: Existing video ID to add captions to. Either `video` or `video_id` must be provided.
+      type: object
+      required:
+      - caption_template_id
+      title: Body_create_captioned_video_v1_videos_captions_post
+    MACaptionTemplate:
+      properties:
+        id:
+          type: string
+          title: Id
+          description: Unique template identifier
+          examples:
+          - ctpl_123456789abcdefg
+        object:
+          type: string
+          const: caption_template
+          title: Object
+          default: caption_template
+        name:
+          type: string
+          title: Name
+          description: Human-readable template name
+          examples:
+          - Bold White
+        preview_url:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Preview Url
+          description: URL to a preview video of the template
+          examples:
+          - https://captions-cdn.xyz/studio-assets/captions-style-previews/1FA3A381-5DDF-4ECD-936B-63D7CF16DEB0.mp4
+        created_at:
+          type: integer
+          title: Created At
+          description: When the template was created (unix timestamp)
+          examples:
+          - 1730000000
+      type: object
+      required:
+      - id
+      - name
+      - created_at
+      title: MACaptionTemplate
+      description: Represents a caption style template
+    MAVideoError:
+      properties:
+        code:
+          type: string
+          title: Code
+          description: Error code
+          examples:
+          - rate_limit_exceeded
+        message:
+          type: string
+          title: Message
+          description: Error message
+          examples:
+          - Rate limit exceeded. Please try again later.
+      type: object
+      required:
+      - code
+      - message
+      title: MAVideoError
+      description: Error payload that explains why generation failed, if applicable
+    MAVideo:
+      properties:
+        id:
+          type: string
+          title: Id
+          description: Video generation job ID
+          examples:
+          - video_abc123def456
+        object:
+          type: string
+          const: video
+          title: Object
+          default: video
+        status:
+          type: string
+          enum:
+          - PROCESSING
+          - COMPLETE
+          - FAILED
+          - CANCELLED
+          title: Status
+          description: Current state of the video
+          examples:
+          - COMPLETE
+        created_at:
+          type: integer
+          title: Created At
+          description: When the video was created (unix timestamp)
+          examples:
+          - 1730822400
+        completed_at:
+          anyOf:
+          - type: integer
+          - type: 'null'
+          title: Completed At
+          description: When processing completed (unix timestamp)
+          examples:
+          - 1730822520
+        progress:
+          anyOf:
+          - type: integer
+          - type: 'null'
+          title: Progress
+          description: Progress percentage (0-100)
+          examples:
+          - 100
+        error:
+          anyOf:
+          - $ref: '#/components/schemas/MAVideoError'
+          - type: 'null'
+          description: Error details if status is FAILED
+          examples:
+          - null
+        model:
+          anyOf:
+          - type: string
+            const: mirage-video-1-latest
+          - type: 'null'
+          title: Model
+          description: Model used for generation (only for source='generation')
+          examples:
+          - mirage-video-1-latest
+        source_video_id:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Source Video Id
+          description: The input video that was captioned (only for source='caption')
+          examples:
+          - video_abc123def456
+        caption_template_id:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Caption Template Id
+          description: Caption style template used (only for source='caption')
+          examples:
+          - ctpl_123456789abcdefg
+        share_link_url:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Share Link Url
+          description: Public share link for a completed internal video, when enabled.
+          examples:
+          - https://captions.ai/share/eyJ2Ijox.../share-token
+        video_id:
+          type: string
+          title: Video Id
+          description: '[Deprecated] Use "id" instead.'
+          deprecated: true
+      type: object
+      required:
+      - id
+      - status
+      - created_at
+      - video_id
+      title: MAVideo
+      description: 'Represents a video object.
+
+
+        A video can be created via generation (an image appearance reference plus audio) or
+
+        captioning (adding captions to an existing video).'
+      examples:
+      - completed_at: 1730822520
+        created_at: 1730822400
+        model: mirage-video-1-latest
+        progress: 100
+        status: COMPLETE
+        video_id: video_abc123def456
+      - caption_template_id: ctpl_123456789abcdefg
+        created_at: 1730822600
+        progress: 50
+        source_video_id: video_abc123def456
+        status: PROCESSING
+        video_id: video_xyz789

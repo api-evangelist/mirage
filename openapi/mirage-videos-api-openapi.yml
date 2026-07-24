@@ -1,0 +1,381 @@
+openapi: 3.1.0
+info:
+  title: Mirage Video Audio Videos API
+  description: API for AI-powered video generation
+  version: 0.0.1
+tags:
+- name: Videos
+paths:
+  /v1/videos:
+    post:
+      tags:
+      - Videos
+      summary: Create Video
+      operationId: create_video_generation_v1_videos_post
+      parameters:
+      - name: x-api-key
+        in: header
+        required: true
+        schema:
+          type: string
+          description: API Key for authentication
+          title: X-Api-Key
+        description: API Key for authentication
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Body_create_video_generation_v1_videos_post'
+      responses:
+        '200':
+          description: Returns a Video object representing the generation job
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MAVideo'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+    get:
+      tags:
+      - Videos
+      summary: List Videos
+      description: 'List videos for the authenticated API key with optional pagination.
+
+
+        - Filters by the calling user''s ID (and org if present)
+
+        - Ordered by creation time ascending or descending
+
+        - Supports cursor pagination using the `after` video ID'
+      operationId: list_videos_v1_videos_get
+      parameters:
+      - name: after
+        in: query
+        required: false
+        schema:
+          anyOf:
+          - type: string
+          - type: 'null'
+          description: Return items strictly after this video ID
+          title: After
+        description: Return items strictly after this video ID
+      - name: limit
+        in: query
+        required: false
+        schema:
+          type: integer
+          maximum: 100
+          minimum: 1
+          description: Max number of items to return
+          default: 20
+          title: Limit
+        description: Max number of items to return
+      - name: order
+        in: query
+        required: false
+        schema:
+          enum:
+          - asc
+          - desc
+          type: string
+          description: Sort order by creation time
+          default: desc
+          title: Order
+        description: Sort order by creation time
+      - name: x-api-key
+        in: header
+        required: true
+        schema:
+          type: string
+          description: API Key for authentication
+          title: X-Api-Key
+        description: API Key for authentication
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/MAVideo'
+                title: Response List Videos V1 Videos Get
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /v1/videos/{video_id}:
+    get:
+      tags:
+      - Videos
+      summary: Retrieve Video
+      description: Get the status of a video.
+      operationId: get_video_status_v1_videos__video_id__get
+      parameters:
+      - name: video_id
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Video Id
+      - name: x-api-key
+        in: header
+        required: true
+        schema:
+          type: string
+          description: API Key for authentication
+          title: X-Api-Key
+        description: API Key for authentication
+      responses:
+        '200':
+          description: Returns a Video object with the current generation status
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MAVideo'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /v1/videos/{video_id}/content:
+    get:
+      tags:
+      - Videos
+      summary: Retrieve Video Content
+      description: Download the video file (redirects to video URL).
+      operationId: get_video_content_v1_videos__video_id__content_get
+      parameters:
+      - name: video_id
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Video Id
+      - name: x-api-key
+        in: header
+        required: true
+        schema:
+          type: string
+          description: API Key for authentication
+          title: X-Api-Key
+        description: API Key for authentication
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+components:
+  schemas:
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          type: array
+          title: Detail
+      type: object
+      title: HTTPValidationError
+    ValidationError:
+      properties:
+        loc:
+          items:
+            anyOf:
+            - type: string
+            - type: integer
+          type: array
+          title: Location
+        msg:
+          type: string
+          title: Message
+        type:
+          type: string
+          title: Error Type
+        input:
+          title: Input
+        ctx:
+          type: object
+          title: Context
+      type: object
+      required:
+      - loc
+      - msg
+      - type
+      title: ValidationError
+    Body_create_video_generation_v1_videos_post:
+      properties:
+        audio_reference:
+          type: string
+          contentMediaType: application/octet-stream
+          title: Audio Reference
+          description: Audio file (WAV or MP3)
+        image_reference:
+          anyOf:
+          - type: string
+            contentMediaType: application/octet-stream
+          - type: 'null'
+          title: Image Reference
+          description: Image appearance reference (JPEG or PNG).
+        model:
+          type: string
+          const: mirage-video-1-latest
+          title: Model
+          description: Model to use for generation
+          default: mirage-video-1-latest
+      type: object
+      required:
+      - audio_reference
+      - image_reference
+      title: Body_create_video_generation_v1_videos_post
+    MAVideoError:
+      properties:
+        code:
+          type: string
+          title: Code
+          description: Error code
+          examples:
+          - rate_limit_exceeded
+        message:
+          type: string
+          title: Message
+          description: Error message
+          examples:
+          - Rate limit exceeded. Please try again later.
+      type: object
+      required:
+      - code
+      - message
+      title: MAVideoError
+      description: Error payload that explains why generation failed, if applicable
+    MAVideo:
+      properties:
+        id:
+          type: string
+          title: Id
+          description: Video generation job ID
+          examples:
+          - video_abc123def456
+        object:
+          type: string
+          const: video
+          title: Object
+          default: video
+        status:
+          type: string
+          enum:
+          - PROCESSING
+          - COMPLETE
+          - FAILED
+          - CANCELLED
+          title: Status
+          description: Current state of the video
+          examples:
+          - COMPLETE
+        created_at:
+          type: integer
+          title: Created At
+          description: When the video was created (unix timestamp)
+          examples:
+          - 1730822400
+        completed_at:
+          anyOf:
+          - type: integer
+          - type: 'null'
+          title: Completed At
+          description: When processing completed (unix timestamp)
+          examples:
+          - 1730822520
+        progress:
+          anyOf:
+          - type: integer
+          - type: 'null'
+          title: Progress
+          description: Progress percentage (0-100)
+          examples:
+          - 100
+        error:
+          anyOf:
+          - $ref: '#/components/schemas/MAVideoError'
+          - type: 'null'
+          description: Error details if status is FAILED
+          examples:
+          - null
+        model:
+          anyOf:
+          - type: string
+            const: mirage-video-1-latest
+          - type: 'null'
+          title: Model
+          description: Model used for generation (only for source='generation')
+          examples:
+          - mirage-video-1-latest
+        source_video_id:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Source Video Id
+          description: The input video that was captioned (only for source='caption')
+          examples:
+          - video_abc123def456
+        caption_template_id:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Caption Template Id
+          description: Caption style template used (only for source='caption')
+          examples:
+          - ctpl_123456789abcdefg
+        share_link_url:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Share Link Url
+          description: Public share link for a completed internal video, when enabled.
+          examples:
+          - https://captions.ai/share/eyJ2Ijox.../share-token
+        video_id:
+          type: string
+          title: Video Id
+          description: '[Deprecated] Use "id" instead.'
+          deprecated: true
+      type: object
+      required:
+      - id
+      - status
+      - created_at
+      - video_id
+      title: MAVideo
+      description: 'Represents a video object.
+
+
+        A video can be created via generation (an image appearance reference plus audio) or
+
+        captioning (adding captions to an existing video).'
+      examples:
+      - completed_at: 1730822520
+        created_at: 1730822400
+        model: mirage-video-1-latest
+        progress: 100
+        status: COMPLETE
+        video_id: video_abc123def456
+      - caption_template_id: ctpl_123456789abcdefg
+        created_at: 1730822600
+        progress: 50
+        source_video_id: video_abc123def456
+        status: PROCESSING
+        video_id: video_xyz789
