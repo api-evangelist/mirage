@@ -1,0 +1,61 @@
+generated: '2026-07-20'
+method: derived
+source: openapi/mirage-openapi-original.json
+docs: https://captions.ai/help/api-reference
+authentication:
+  style: api-key-header
+  header: x-api-key
+  ref: authentication/mirage-authentication.yml
+async_model:
+  pattern: submit-and-poll
+  description: >-
+    Write operations (video generation, captioning, text-to-speech, meta text
+    overlays) create a job that returns immediately with status=PROCESSING.
+    Clients poll GET /v1/videos/{video_id} (or the resource's GET) until status
+    is COMPLETE or FAILED, then fetch the rendered output.
+  status_values:
+  - PROCESSING
+  - COMPLETE
+  - FAILED
+  - CANCELLED
+  progress_field: progress
+  completion_field: completed_at
+  content_operation: GET /v1/videos/{video_id}/content
+pagination:
+  style: cursor
+  params:
+  - name: after
+    description: Return items strictly after this video ID.
+  - name: limit
+    description: Max items to return (default 20, max 100).
+  - name: order
+    description: Sort by creation time; asc or desc (default desc).
+  applies_to:
+  - GET /v1/videos
+idempotency:
+  supported: false
+  note: >-
+    No idempotency-key header or parameter is documented in the OpenAPI or API
+    reference. Duplicate submit calls create distinct jobs.
+versioning:
+  scheme: uri-path
+  current: v1
+  model_versioning:
+    description: Generation/audio models are pinned by name (e.g. mirage-video-1-latest, mirage-audio-1).
+error_envelope:
+  shape: '{ "code": string, "message": string }'
+  ref: errors/mirage-problem-types.yml
+  rfc9457: false
+rate_limit_signaling:
+  documented: true
+  mechanism: >-
+    Usage/rate limits are enforced per plan; exceeding them surfaces a
+    rate_limit_exceeded error code. Per-plan request/rate limits are described
+    on the API pricing page.
+  docs: https://captions.ai/help/docs/api/pricing
+deprecations:
+  fields:
+  - field: video_id
+    on: MAVideo
+    replacement: id
+    note: '[Deprecated] Use "id" instead.'

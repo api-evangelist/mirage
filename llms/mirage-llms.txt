@@ -1,0 +1,78 @@
+# Captions
+
+> Captions is an AI video editor and generator built by Mirage (New York City). It transforms raw footage into fully-edited, stylized videos — or generates entirely new videos from a text prompt or selfie. Designed for content creators, influencers, small businesses, enterprise teams, marketers, agencies, and other professionals who need video to grow. Available on iOS, Android, and mobile web or desktop. Free to sign up; advanced features require a paid plan.
+
+Captions automates the most time-consuming parts of video production: cutting scenes, adding B-roll, inserting music and sound effects, generating and styling captions, dubbing into 30+ languages, and correcting eye contact. Users can edit through a chat-based prompt interface, one-tap AI style presets, or manual timeline controls. Videos can be published directly to TikTok, Instagram, YouTube, and more.
+
+## Product
+
+- [Home](https://captions.ai/): Main homepage. Introduce Captions as an AI video generator and editor. Covers core value propositions, key features, social proof, and links to download and sign up.
+- [Pricing](https://captions.ai/pricing): Plan details and feature comparison. Free plan includes basic trimming, transitions, and 1 caption template with watermark on export. Pro ($9.99/mo) removes watermarks and unlocks 100+ caption templates. Max ($24.99/mo) adds AI Twin, AI Actors, text-to-video, chat-based editor, and 500 credits/month. Scale ($69.99–$279.99/mo) adds 1,400–5,600 credits/month and top-tier generative AI models. Enterprise offers custom pricing, bulk discounts, dedicated support, and SOC 2 compliance. Unused credits roll over (up to 3× monthly allowance).
+- [Download](https://captions.ai/download): Get the Captions app for iOS or Android. Also available on Web via the sign-up page.
+- [Sign Up](https://captions.ai/signup): Create a free account via Google, Apple, email, or phone.
+
+## Features
+
+- [Edit with AI](https://captions.ai/features/edit-with-ai): AI Edit applies styles, B-roll, transitions, music, and other elements to raw footage automatically. No editing skills required to edit an entire video at once. Includes a chat-based editor for prompt-driven changes, and quick fixes (trim filler words/pauses, denoise audio, adjust eye contact, remove backgrounds, add zooms, enhance footage).
+- [Add Captions to Videos](https://captions.ai/features/add-captions-to-videos): Auto-transcription with 100+ stylizable caption templates. Customize font, color, size, animation, and placement. Supports 100+ languages.
+- [Add Subtitles to Videos](https://captions.ai/features/add-subtitles-to-videos): Accurate subtitle generation synced to video timeline, with translation support for global audiences.
+- [Translate Videos with AI](https://captions.ai/features/translate-videos-with-ai): Translate and dub videos into 30+ languages with a cloned version of the speaker's voice and lip movements synced to the new audio.
+- [Generate AI Avatars](https://captions.ai/features/generate-ai-avatars): Create realistic AI video avatars from a photo, short clip, or text prompt. Includes a library of AI Actors and AI Twins (digital clones of the user). Customize outfits, backgrounds, and delivery. Avatars are generated as complete performances — audio, video, and visuals rendered together for natural results.
+- [Correct Eye Contact](https://captions.ai/features/correct-your-eye-contact): AI adjusts a speaker's gaze to appear as direct eye contact with the camera, even if they were reading a teleprompter or looking away during recording.
+- [AI B-Roll Generator](https://captions.ai/tools/ai-b-roll-generator): Automatically generates or suggests relevant B-roll footage to insert into videos.
+
+## Solutions
+
+### Teams & Business
+
+- [Enterprise](https://captions.ai/solutions/enterprise): For enterprise teams producing video at scale. Includes SOC 2 certification, custom-branded templates, role-based permissions, bulk credit discounts, dedicated account management, and white-glove onboarding. Full commercial rights on all output. Trusted by HubSpot, Comcast, Harvard, and Fox.
+- [Agencies](https://captions.ai/solutions/agencies): For advertising agencies producing UGC-style video for clients. Generate pitch-ready videos in minutes using on-demand AI actors with no casting or contracts. Easily version content across platforms, swap scripts, and iterate without eating into margins. Full commercial rights included—multi-client workspace with flexible and custom pricing available.
+- [Marketers](https://captions.ai/solutions/marketers-and-agencies): For solo marketers and marketing teams producing video at scale. Go from strategy to published post in one tool with no handoffs or vendor switching. Covers social campaigns, video ads, and performance content. AI editing keeps quality consistent even at high volume.
+- [Small Businesses](https://captions.ai/solutions/small-businesses): For small businesses creating video without a production budget or editing experience. Upload or generate a video and AI handles cuts, captions, B-roll, music, and formatting automatically. Auto-resizes for TikTok, Reels, YouTube Shorts, and more. Full commercial rights on all output.
+- [Ecommerce](https://captions.ai/solutions/ecommerce): For ecommerce brands creating product demos, video ads, and listing content at scale. AI quick fixes like eye contact correction, background removal, and noise reduction polish footage automatically. Supports high-volume production without a professional production team.
+- [Entrepreneurs](https://captions.ai/solutions/entrepreneurs): For founders and personal brands building an audience through video. Record footage and edit in minutes, or generate thought leadership content as an AI Twin with no production team needed. Exports directly to LinkedIn, YouTube, Instagram, and more.
+- [Nonprofits](https://captions.ai/solutions/nonprofits): For nonprofit teams creating fundraising videos, impact stories, and awareness content without a production budget.
+- [Online Video Marketing](https://captions.ai/solutions/online-video-marketing): For marketing teams running video-driven campaigns. Generate or upload footage, then produce variants across formats and platforms. Supports A/B testing with easy script swaps and remix tools. Works for product launches, social ads, and testimonial content.
+
+### Creator Verticals
+
+- [Beauty Creators](https://captions.ai/solutions/beauty-creators): For makeup, skincare, and beauty creators producing tutorials, reviews, and brand content with a polished, professional finish.
+- [Education](https://captions.ai/solutions/teachers-and-education-creators): For teachers and education creators making instructional and explainer videos. Captions and subtitles improve accessibility and comprehension.
+- [Faith & Church](https://captions.ai/solutions/church-content-creators): For churches and ministry leaders creating sermon clips, devotionals, and faith-based content for social and web. AI editing handles entire videos at once, with automatic captions.
+- [Fashion Creators](https://captions.ai/solutions/fashion-creators): For fashion influencers and stylists producing lookbooks, outfit videos, and brand content.
+- [Finance](https://captions.ai/solutions/financial-advisors-and-creators): For financial advisors and finance creators building trust through educational video. Supports thought leadership, market updates, and client-facing explainers. Disclaimers and required text can be added directly in video prompts.
+- [Fitness Creators](https://captions.ai/solutions/fitness-creators): For personal trainers and wellness creators producing workout tutorials, coaching content, and motivational videos. AI handles editing, captions, B-roll, and graphics from a prompt.
+- [Food Creators](https://captions.ai/solutions/food-creators): For food bloggers and recipe creators making cooking videos, restaurant content, and food reviews.
+- [Healthcare](https://captions.ai/solutions/healthcare-professionals): For healthcare professionals creating patient education videos, health explainers, and medical content for social and web.
+- [Home & DIY Creators](https://captions.ai/solutions/home-and-diy-creators): For home improvement and DIY creators producing tutorials, project walkthroughs, and before-and-after content. Prompt-based video generation handles editing so creators can focus on the work itself.
+- [Legal Experts](https://captions.ai/solutions/legal-experts): For lawyers and legal professionals creating educational and thought leadership videos for clients and social audiences.
+- [Life Coaches & Motivational Speakers](https://captions.ai/solutions/life-coaches-and-motivational-speakers): For coaches and motivational speakers building an audience through video across YouTube, Instagram, TikTok, and LinkedIn.
+- [Podcasters](https://captions.ai/solutions/podcasters): For podcasters repurposing episodes into short-form video clips. Auto-transcription, captions, and AI editing make clips publish-ready in minutes — no video experience needed.
+- [Real Estate Agents](https://captions.ai/solutions/real-estate-agents): For real estate agents creating property listing videos, market updates, and personal brand content without a videographer.
+
+### Video Types & Use Cases
+
+- [Talking-Head Videos](https://captions.ai/solutions/talking-head-videos): For creators and teams producing talking-head style video at scale. Record and edit real footage, generate an AI Twin from a single photo, or cast from a library of AI actors. Supports multilingual output with natural lip-sync.
+- [Short-Form Video](https://captions.ai/solutions/short-form-video): For creators and teams producing short-form content for TikTok, Instagram Reels, and YouTube Shorts. Drop in long-form footage, and AI cuts it into clips or generates new short videos from a prompt. Handles pacing, timing, captions, and transitions optimized for social feeds.
+- [AI Twin](https://captions.ai/solutions/ai-twin): Create a digital twin from a selfie. Generate new video content as yourself without being on camera. Supports multilingual dubbing with synced lip movements.
+- [AI-Generated Actors](https://captions.ai/solutions/ai-generated-actors): Generate realistic onscreen talent from a text prompt. No cameras, sets, or casting needed. AI actors deliver expressive, organic performances with customizable appearance, outfits, backgrounds, and mannerisms. Reuse the same actor across 30+ languages with natural lip-sync. Full commercial rights included.
+- [AI Spokesperson](https://captions.ai/solutions/ai-spokesperson): Turn a script into a polished spokesperson video using a generated AI presenter. No casting or shoot required. Customize appearance, environment, and outfits across videos. Suited for product explainers, announcements, training content, and social media.
+
+## Company
+
+- [About Us](https://mirage.app/about-us): Captions is built by Mirage, an AI research company headquartered in New York City.
+- [Blog](https://captions.ai/blog): Tutorials, product updates, and creator guides. Topics include finding your video style with AI Edit, making avatars from photos, horizontal video editing, and more.
+- [Research](https://mirage.app/research): AI research from the Mirage team.
+- [Careers](https://jobs.ashbyhq.com/mirage): Open roles at Mirage.
+- [Press Coverage](https://mirage.app/about-us/press): Media coverage of Captions and Mirage.
+
+## Legal
+
+- [Privacy Policy](https://mirage.app/legal/privacy-policy)
+- [Captions Terms](https://mirage.app/legal/captions-terms)
+- [Captions on Web Terms](https://mirage.app/legal/captions-web-terms)
+- [Safety & Security](https://mirage.app/safety-and-security)
+
+## Support
+
+For help with the product, visit the [Captions Help Center](https://captions.ai/help). The help center covers getting started, subscriptions and billing, video generation, editing captions, publishing and export, account settings, troubleshooting, guides, and the Captions API. For the full documentation index, see [llms.txt](https://captions.ai/help/llms.txt).

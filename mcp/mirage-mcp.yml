@@ -1,0 +1,42 @@
+generated: '2026-07-20'
+method: derived
+status: candidate
+source: openapi/mirage-openapi-original.json
+note: >-
+  No official hosted/remote MCP server was found for Mirage/Captions. This is a
+  candidate tool surface derived from the public Mirage Video API operations
+  (the /internal operations are excluded). Auth is an x-api-key header.
+server:
+  name: mirage
+  transport: http
+tools:
+- name: create_video_generation
+  description: Generate an expressive human video from an image appearance reference and audio.
+  source_operation: openapi/mirage-openapi-original.json#create_video_generation_v1_videos_post
+- name: list_videos
+  description: List video jobs for the authenticated key (cursor pagination).
+  source_operation: openapi/mirage-openapi-original.json#list_videos_v1_videos_get
+- name: get_video_status
+  description: Poll the status/progress of a video job by id.
+  source_operation: openapi/mirage-openapi-original.json#get_video_status_v1_videos__video_id__get
+- name: get_video_content
+  description: Download the rendered content for a completed video job.
+  source_operation: openapi/mirage-openapi-original.json#get_video_content_v1_videos__video_id__content_get
+- name: create_captioned_video
+  description: Apply styled captions to an existing video.
+  source_operation: openapi/mirage-openapi-original.json#create_captioned_video_v1_videos_captions_post
+- name: list_caption_templates
+  description: List available caption style templates.
+  source_operation: openapi/mirage-openapi-original.json#list_caption_templates_v1_videos_captions_templates_get
+- name: get_caption_template
+  description: Get a caption style template by id.
+  source_operation: openapi/mirage-openapi-original.json#get_caption_template_v1_videos_captions_templates__template_id__get
+- name: generate_text_to_speech
+  description: Synthesize speech from text using a chosen voice.
+  source_operation: openapi/mirage-openapi-original.json#generate_text_to_speech_v1_audio_text_to_speech__voice_id__post
+- name: create_meta_text_overlay
+  description: Create a rendered meta text overlay job.
+  source_operation: openapi/mirage-openapi-original.json#create_meta_text_overlay_v1_meta_text_overlays_post
+- name: get_meta_text_overlay
+  description: Get a meta text overlay job by id.
+  source_operation: openapi/mirage-openapi-original.json#get_meta_text_overlay_v1_meta_text_overlays__text_overlay_id__get

@@ -1,0 +1,25 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for Mirage Video API
+  version: 1.0.0
+extends: openapi/mirage-openapi-original.json
+actions:
+- target: $.info
+  update:
+    x-apievangelist-provider: mirage
+    x-apievangelist-backed-by: general-catalyst
+    x-apievangelist-auth: x-api-key header (see authentication/mirage-authentication.yml)
+    x-apievangelist-async-model: submit-and-poll
+- target: $.servers
+  update:
+  - url: https://api.mirage.app
+    description: Production (added by API Evangelist; the source spec declares no servers[]).
+- target: $.components.securitySchemes
+  update:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: x-api-key
+      description: >-
+        API key issued from the dashboard. The source spec omits securitySchemes;
+        this documents the auth the API reference requires.

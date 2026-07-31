@@ -1,0 +1,25 @@
+generated: '2026-07-20'
+method: generated
+source: openapi/mirage-openapi-original.json
+skills:
+- file: mirage-generate-video.md
+  name: Generate an expressive human video with Mirage
+  api: openapi/mirage-openapi-original.json
+  operations:
+  - create_video_generation_v1_videos_post
+  - get_video_status_v1_videos__video_id__get
+  - get_video_content_v1_videos__video_id__content_get
+- file: mirage-caption-video.md
+  name: Add styled captions to a video with Mirage
+  api: openapi/mirage-openapi-original.json
+  operations:
+  - list_caption_templates_v1_videos_captions_templates_get
+  - get_caption_template_v1_videos_captions_templates__template_id__get
+  - create_captioned_video_v1_videos_captions_post
+  - get_video_status_v1_videos__video_id__get
+  - get_video_content_v1_videos__video_id__content_get
+- file: mirage-text-to-speech.md
+  name: Synthesize speech with Mirage text-to-speech
+  api: openapi/mirage-openapi-original.json
+  operations:
+  - generate_text_to_speech_v1_audio_text_to_speech__voice_id__post

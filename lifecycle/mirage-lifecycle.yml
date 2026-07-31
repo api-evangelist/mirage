@@ -1,0 +1,30 @@
+generated: '2026-07-20'
+method: searched
+source: openapi/mirage-openapi-original.json
+docs: https://captions.ai/help/api-reference
+versioning:
+  scheme: uri-path
+  current: v1
+  spec_version: 0.0.1
+  model_pinning:
+  - mirage-video-1-latest
+  - mirage-audio-1
+deprecation:
+  policy_url: null
+  sunset_header: false
+  note: >-
+    No formal deprecation policy or RFC 8594 Sunset/Deprecation header support
+    is documented. Field-level deprecation is signaled in the OpenAPI (MAVideo.video_id
+    is deprecated in favor of id).
+sla:
+  url: null
+  uptime_target: null
+status_page: null
+changelog:
+  product: https://captions.ai/help/whats-new
+  api_note: >-
+    The Captions API launched for developers in June 2024 (per the product
+    changelog); there is no separate dated API changelog page.
+deprecated_operations: []
+deprecated_fields:
+- openapi/mirage-openapi-original.json#/components/schemas/MAVideo/properties/video_id

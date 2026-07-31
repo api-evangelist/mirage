@@ -1,0 +1,36 @@
+generated: '2026-07-20'
+method: derived
+source: openapi/mirage-openapi-original.json
+format: custom
+envelope:
+  shape: '{ "code": string, "message": string }'
+  location: >-
+    On a failed job the error object is returned on the video object's `error`
+    field (MAVideoError) when `status` is FAILED. Request-time validation errors
+    use the FastAPI HTTPValidationError shape (`{ "detail": [ ... ] }`).
+  note: >-
+    The API does not use RFC 9457 application/problem+json. Job-level failures
+    surface a {code, message} object; every public operation additionally
+    documents a 422 request-validation response.
+problems:
+- code: rate_limit_exceeded
+  http_status: null
+  surfaced_on: error.code (MAVideoError)
+  title: Rate limit exceeded
+  message: Rate limit exceeded. Please try again later.
+  remediation: Back off and retry after the rate-limit window; request higher limits for your plan.
+  source: openapi/mirage-openapi-original.json#/components/schemas/MAVideoError
+- code: validation_error
+  http_status: 422
+  surfaced_on: HTTPValidationError.detail[]
+  title: Unprocessable Entity (request validation failed)
+  message: One or more request fields failed validation.
+  remediation: Correct the flagged fields (see detail[].loc / detail[].msg) and resubmit.
+  source: openapi/mirage-openapi-original.json (422 responses on all operations)
+- code: generation_failed
+  http_status: null
+  surfaced_on: status=FAILED with error object populated
+  title: Video generation failed
+  message: Processing failed; see the error object on the video for details.
+  remediation: Inspect video.error.code / video.error.message; adjust inputs and resubmit a new job.
+  source: openapi/mirage-openapi-original.json#/components/schemas/MAVideo (status enum FAILED)

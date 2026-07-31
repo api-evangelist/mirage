@@ -1,0 +1,25 @@
+generated: '2026-07-20'
+method: searched
+source: openapi/mirage-openapi-original.json
+docs: https://captions.ai/help/docs/api/overview
+summary:
+  types:
+  - apiKey
+  api_key_in:
+  - header
+  oauth2_flows: []
+  note: >-
+    The published OpenAPI (Mirage Video API 0.0.1) declares no securitySchemes
+    object; authentication is documented in the API reference. Every request to
+    the production API must include an API key in the x-api-key header. API keys
+    are issued from the Captions/Mirage dashboard.
+schemes:
+- name: ApiKeyAuth
+  type: apiKey
+  in: header
+  parameter_name: x-api-key
+  description: >-
+    API key issued from the dashboard, sent on every request as the x-api-key
+    header.
+  sources:
+  - https://captions.ai/help/docs/api/overview

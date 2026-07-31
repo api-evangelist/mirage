@@ -1,0 +1,29 @@
+generated: '2026-07-20'
+method: derived
+source: openapi/mirage-openapi-original.json
+standards:
+- id: openapi-3.1
+  conforms: true
+  evidence: Provider publishes OpenAPI 3.1.0 at https://api.mirage.app/openapi.json
+- id: oauth2
+  conforms: false
+  evidence: API-key (x-api-key header) auth only; no OAuth2 flows declared.
+- id: openid-connect
+  conforms: false
+- id: rfc9457-problem-details
+  conforms: false
+  evidence: Errors use a custom {code, message} envelope, not application/problem+json.
+- id: rfc8594-sunset-header
+  conforms: false
+  evidence: No Sunset/Deprecation header support documented.
+- id: cursor-pagination
+  conforms: true
+  evidence: GET /v1/videos supports after/limit/order cursor pagination.
+- id: idempotency-keys
+  conforms: false
+  evidence: No Idempotency-Key header/parameter documented.
+- id: soc2
+  conforms: true
+  evidence: >-
+    Enterprise plan advertises SOC 2 compliance / certification
+    (https://captions.ai/solutions/enterprise; captions.ai/pricing).

@@ -1,0 +1,33 @@
+generated: '2026-07-20'
+method: probed
+source: live DNS/TLS/HTTP probes of apis.yml + OpenAPI hosts
+hosts:
+- host: captions.ai
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Sep  2 20:35:07 2026 GMT
+  hsts: false
+- host: api.mirage.app
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Aug 24 16:44:58 2026 GMT
+  hsts: null
+domains:
+- domain: captions.ai
+  dnssec: false
+  caa:
+  - 0 issuewild "pki.goog; cansignhttpexchanges=yes"
+  - 0 issuewild "ssl.com"
+  - 0 issue "comodoca.com"
+  - 0 issue "digicert.com; cansignhttpexchanges=yes"
+  - 0 issue "letsencrypt.org"
+  - 0 issue "pki.goog; cansignhttpexchanges=yes"
+  spf: true
+  dmarc: true
+  dmarc_policy: reject
+- domain: mirage.app
+  dnssec: true
+  caa: []
+  spf: true
+  dmarc: true
+  dmarc_policy: quarantine

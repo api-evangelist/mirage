@@ -1,0 +1,48 @@
+generated: '2026-07-20'
+method: derived
+source: openapi/mirage-openapi-original.json
+docs: https://captions.ai/help/api-reference
+id_prefixes:
+- entity: Video
+  prefix: video_
+  example: video_abc123def456
+- entity: CaptionTemplate
+  prefix: ctpl_
+  example: ctpl_123456789abcdefg
+entities:
+- name: Video
+  schema: MAVideo
+  description: >-
+    A video job, created via generation (image appearance reference + audio) or
+    captioning (captions added to an existing video). Carries lifecycle status,
+    progress, and — on completion — downloadable content.
+  key_fields:
+  - id
+  - status
+  - created_at
+  - completed_at
+  - progress
+  - model
+  - source_video_id
+  - caption_template_id
+  - share_link_url
+  relationships:
+  - kind: belongs_to
+    target: Video
+    via: source_video_id
+    note: A captioned video references the input video it was generated from.
+  - kind: belongs_to
+    target: CaptionTemplate
+    via: caption_template_id
+    note: A captioned video references the caption style template applied.
+- name: CaptionTemplate
+  schema: MACaptionTemplate
+  description: A named caption style template that can be applied when captioning a video.
+  key_fields:
+  - id
+- name: MetaTextOverlay
+  schema: MetaTextOverlay
+  description: A rendered meta text overlay job.
+- name: Error
+  schema: MAVideoError
+  description: '{code, message} payload explaining why a job failed.'

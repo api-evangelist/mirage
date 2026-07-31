@@ -1,0 +1,26 @@
+{
+  "provider": "mirage",
+  "sources": [
+    "mirage-audio-api-openapi.yml",
+    "mirage-health-api-openapi.yml",
+    "mirage-internal-api-openapi.yml",
+    "mirage-meta-text-overlays-api-openapi.yml",
+    "mirage-root-api-openapi.yml",
+    "mirage-video-captions-api-openapi.yml",
+    "mirage-videos-api-openapi.yml"
+  ],
+  "outputs": [
+    "mirage-audio-api-openapi.yml",
+    "mirage-health-api-openapi.yml",
+    "mirage-internal-api-openapi.yml",
+    "mirage-meta-text-overlays-api-openapi.yml",
+    "mirage-root-api-openapi.yml",
+    "mirage-video-captions-api-openapi.yml",
+    "mirage-videos-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}

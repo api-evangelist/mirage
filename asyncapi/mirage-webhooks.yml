@@ -1,0 +1,65 @@
+generated: '2026-07-20'
+method: searched
+source: https://captions.ai/help/api-reference/webhooks
+docs: https://captions.ai/help/api-reference/webhooks
+summary: >-
+  The Captions/Mirage AI Creator API supports webhooks so a registered endpoint
+  is notified when a video generation job reaches a terminal state, instead of
+  polling. Webhook management endpoints live under the api.captions.ai host
+  (distinct from the api.mirage.app Video API base) and are documented as an
+  Enterprise-only capability. No AsyncAPI document is published; this is a
+  REST-registered webhook catalog captured verbatim from the API reference.
+availability: Enterprise customers only
+base_host: https://api.captions.ai/api/webhooks
+auth:
+  request: x-api-key header (same API key as the rest of the API)
+  callback_verification: >-
+    Each registered webhook is issued a `secret`. The API delivers callbacks
+    with an `Authorization: Bearer <secret>` header so the receiver can confirm
+    the caller is the Captions/Mirage API.
+events:
+- name: creator.success
+  description: A video generation job completed successfully; payload carries the signed output URL.
+- name: creator.failure
+  description: A video generation job failed to complete.
+management_endpoints:
+- method: POST
+  path: /events
+  description: List the available webhook event names.
+  returns: '{ "events": ["creator.success", "creator.failure"] }'
+- method: POST
+  path: /register
+  description: Register a webhook endpoint for one or more events.
+  request: '{ "url": string, "enabledEvents": string[] }'
+  returns: '{ "id", "secret", "url", "enabledEvents" }'
+- method: POST
+  path: /list
+  description: List all registered webhooks for the account.
+  returns: array of '{ "id", "url", "secret", "enabledEvents" }'
+- method: POST
+  path: /update
+  description: Update a registered webhook; rotating the secret.
+  request: '{ "id": string, "url"?: string, "enabledEvents"?: string[] }'
+  returns: updated webhook object with a new secret
+- method: POST
+  path: /delete
+  description: Delete a registered webhook.
+  request: '{ "id": string }'
+  returns: '{ "success": true }'
+callback_payload:
+  transport: HTTP POST to the registered url
+  headers:
+    Content-Type: application/json
+    Authorization: Bearer <secret>
+  body_shape: >-
+    { "url": <signed-video-url>, "event": "creator.success", "operationId":
+    <operation-id>, "creditsSpent": <number> }
+notes:
+- >-
+  Polling remains available as an alternative for non-Enterprise accounts: the
+  AI Creator API exposes a /poll path keyed by video/operation id until status
+  reaches COMPLETE.
+- >-
+  The api.mirage.app Video API (the OpenAPI captured in this repo) is a
+  submit-and-poll surface; webhooks are documented against the api.captions.ai
+  AI Creator surface of the same company.

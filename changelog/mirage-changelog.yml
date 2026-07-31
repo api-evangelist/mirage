@@ -1,0 +1,36 @@
+generated: '2026-07-20'
+method: searched
+source: https://captions.ai/help/whats-new
+scheme: dated-product-changelog
+current_version: v1
+api_note: >-
+  Mirage/Captions publishes a dated product changelog (What's New) covering the
+  Captions app; there is no separate dated API changelog. The Captions API
+  became available to developers in June 2024. Entries below are the recent
+  product-changelog window.
+entries:
+- date: '2026-06'
+  breaking: false
+  highlights:
+  - Onboarding refresh and Home V2
+  - Web editor insertions
+  - Bitmap AI Edit style and multi-clip support
+- date: '2026-05'
+  breaking: false
+  highlights:
+  - New AI Edit styles (Stack, Lift, Chalk, Bloom, Prism Pro)
+  - Stroke effects and improved translation access
+- date: '2026-04'
+  breaking: false
+  highlights:
+  - Redesigned Home and Long-to-Short workflows
+  - Full Project Sync rollout; phrase editing on web
+- date: '2026-03'
+  breaking: false
+  highlights:
+  - In-app team management
+  - Negative captions and the Prism style
+- date: '2024-06'
+  breaking: false
+  highlights:
+  - The Captions API became available for developers.
