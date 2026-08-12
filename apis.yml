@@ -153,6 +153,8 @@ apis:
   - type: APIReference
     url: https://captions.ai/help/api-reference
 common:
+- type: Overlay
+  url: overlays/mirage-openapi-overlay.yaml
 - type: DomainSecurity
   url: security/mirage-domain-security.yml
 - type: AgenticAccess
