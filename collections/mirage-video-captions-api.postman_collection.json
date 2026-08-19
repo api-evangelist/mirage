@@ -1,0 +1,569 @@
+{
+  "item": [
+    {
+      "id": "283baaf1-ef07-48e2-95bb-767b05a36e6e",
+      "name": "Video Captions",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "2c6682b2-9ae3-4489-81e5-aa2490f85d95",
+          "name": "Add Captions to a Video",
+          "request": {
+            "name": "Add Captions to a Video",
+            "description": {
+              "content": "Create a captioned video from either an uploaded video file or an existing video ID.\n\nYou must provide exactly one of:\n- `video`: A video file upload (.mp4 or .mov), max 50mb\n- `video_id`: An existing video ID to add captions to\n\nIf providing `video_id`, the source video must have status COMPLETE before it can be captioned.\n\nTo fetch the captioned video, use the `GET videos/{video_id}` endpoint.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "videos",
+                "captions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) API Key for authentication",
+                "key": "x-api-key",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "multipart/form-data"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "caption_template_id",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "(Required) Caption style template ID"
+                },
+                {
+                  "key": "video",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "Video file to caption (MP4, MOV). Must be 9:16 aspect ratio. Max 50mb. Either `video` or `video_id` must be provided."
+                },
+                {
+                  "key": "video_id",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "Existing video ID to add captions to. Either `video` or `video_id` must be provided."
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "35677973-453b-4bd0-860c-b16f9840882f",
+              "name": "Returns a Video object representing the captioning job",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "videos",
+                    "captions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) API Key for authentication",
+                    "key": "x-api-key",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "(Required) Caption style template ID",
+                        "type": "text/plain"
+                      },
+                      "key": "caption_template_id",
+                      "value": "ctpl_yvE0ZnYzEj6ClCD2ee1f",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Video file to caption (MP4, MOV). Must be 9:16 aspect ratio. Max 50mb. Either `video` or `video_id` must be provided.",
+                        "type": "text/plain"
+                      },
+                      "key": "video",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Existing video ID to add captions to. Either `video` or `video_id` must be provided.",
+                        "type": "text/plain"
+                      },
+                      "key": "video_id",
+                      "value": "<string>",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"video_abc123def456\",\n  \"status\": \"COMPLETE\",\n  \"created_at\": 1730822400,\n  \"video_id\": \"string\",\n  \"object\": \"video\",\n  \"completed_at\": 7374,\n  \"progress\": 5765,\n  \"error\": {\n    \"code\": \"rate_limit_exceeded\",\n    \"message\": \"Rate limit exceeded. Please try again later.\"\n  },\n  \"model\": \"string\",\n  \"source_video_id\": \"string\",\n  \"caption_template_id\": \"string\",\n  \"share_link_url\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c787a6b6-dee2-4aab-b2f1-94ce50385d04",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "videos",
+                    "captions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) API Key for authentication",
+                    "key": "x-api-key",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "(Required) Caption style template ID",
+                        "type": "text/plain"
+                      },
+                      "key": "caption_template_id",
+                      "value": "ctpl_yvE0ZnYzEj6ClCD2ee1f",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Video file to caption (MP4, MOV). Must be 9:16 aspect ratio. Max 50mb. Either `video` or `video_id` must be provided.",
+                        "type": "text/plain"
+                      },
+                      "key": "video",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Existing video ID to add captions to. Either `video` or `video_id` must be provided.",
+                        "type": "text/plain"
+                      },
+                      "key": "video_id",
+                      "value": "<string>",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\",\n      \"input\": {},\n      \"ctx\": {}\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\",\n      \"input\": {},\n      \"ctx\": {}\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2126bcc0-a8a1-4f4d-aa88-e81d87f2421d",
+          "name": "List Caption Templates",
+          "request": {
+            "name": "List Caption Templates",
+            "description": {
+              "content": "List available caption style templates.\n\nReturns a paginated list of templates that can be used when creating captioned videos.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "videos",
+                "captions",
+                "templates"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "20",
+                  "description": "Max number of items to return"
+                },
+                {
+                  "disabled": false,
+                  "key": "after",
+                  "value": "<string>",
+                  "description": "Return items strictly after this template ID"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) API Key for authentication",
+                "key": "x-api-key",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "9510be3e-3a79-44d6-bf49-1eedacea59c7",
+              "name": "Returns a paginated list of available caption templates",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "videos",
+                    "captions",
+                    "templates"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "20"
+                    },
+                    {
+                      "key": "after",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) API Key for authentication",
+                    "key": "x-api-key",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"id\": \"ctpl_123456789abcdefg\",\n      \"name\": \"Bold White\",\n      \"created_at\": 1730000000,\n      \"object\": \"caption_template\",\n      \"preview_url\": \"string\"\n    },\n    {\n      \"id\": \"ctpl_123456789abcdefg\",\n      \"name\": \"Bold White\",\n      \"created_at\": 1730000000,\n      \"object\": \"caption_template\",\n      \"preview_url\": \"string\"\n    }\n  ],\n  \"has_more\": false,\n  \"object\": \"list\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "96cfc347-6f38-43f3-b435-c43f4b5cf553",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "videos",
+                    "captions",
+                    "templates"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "20"
+                    },
+                    {
+                      "key": "after",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) API Key for authentication",
+                    "key": "x-api-key",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\",\n      \"input\": {},\n      \"ctx\": {}\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\",\n      \"input\": {},\n      \"ctx\": {}\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "deaa3b72-50c4-4c40-abe6-4633566b0cac",
+          "name": "Retrieve Caption Template",
+          "request": {
+            "name": "Retrieve Caption Template",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "videos",
+                "captions",
+                "templates",
+                ":template_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "template_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) API Key for authentication",
+                "key": "x-api-key",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "1c69fa4d-a038-4db6-a7c6-a3f273562552",
+              "name": "Returns a caption template",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "videos",
+                    "captions",
+                    "templates",
+                    ":template_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "template_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) API Key for authentication",
+                    "key": "x-api-key",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"ctpl_123456789abcdefg\",\n  \"name\": \"Bold White\",\n  \"created_at\": 1730000000,\n  \"object\": \"caption_template\",\n  \"preview_url\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d0c473cb-a138-471a-8d83-34cd47d05f9d",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "videos",
+                    "captions",
+                    "templates",
+                    ":template_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "template_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) API Key for authentication",
+                    "key": "x-api-key",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\",\n      \"input\": {},\n      \"ctx\": {}\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\",\n      \"input\": {},\n      \"ctx\": {}\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "b8ea7057-5658-41eb-81f2-9ab3efd0641b",
+    "name": "Mirage Video Audio Video Captions API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "API for AI-powered video generation",
+      "type": "text/plain"
+    }
+  }
+}

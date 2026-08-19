@@ -1,0 +1,47 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Mirage Video Audio API",
+    "version": "0.0.1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Audio",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Generate Speech from Text",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v1/audio/text-to-speech/:voice_id",
+            "headers": [
+              {
+                "name": "x-api-key",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "voice_id",
+                "value": "",
+                "type": "path",
+                "description": "Voice ID to use for TTS generation"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Generate speech from text using the specified voice and model.\n\nThis endpoint synchronously generates audio and returns the binary data directly.\nThe request will block until the TTS generation is complete."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

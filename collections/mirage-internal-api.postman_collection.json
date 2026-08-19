@@ -1,0 +1,1910 @@
+{
+  "item": [
+    {
+      "id": "9b2656eb-1873-4f29-a0c6-4d15203b8137",
+      "name": "internal",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "9fb93f8a-0da6-4cad-96e0-f31528ccfe3b",
+          "name": "Create Api Key",
+          "request": {
+            "name": "Create Api Key",
+            "description": {
+              "content": "Create a new API key for a user.\n\nThis endpoint requires internal API key authentication.\nThe returned API key should be saved securely as it cannot be retrieved again.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "internal",
+                "api-keys",
+                "generate"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) Internal API Key for authentication",
+                "key": "x-api-key",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "27c6a3c5-69ef-4587-abac-add5a348807c",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "internal",
+                    "api-keys",
+                    "generate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Internal API Key for authentication",
+                    "key": "x-api-key",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"api_key\": \"string\",\n  \"key_id\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e072a322-fc7e-4930-8700-9a0503f05a2b",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "internal",
+                    "api-keys",
+                    "generate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Internal API Key for authentication",
+                    "key": "x-api-key",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\",\n      \"input\": {},\n      \"ctx\": {}\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\",\n      \"input\": {},\n      \"ctx\": {}\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "634f662f-e629-4904-94ef-940d259db92b",
+          "name": "Revoke Api Key",
+          "request": {
+            "name": "Revoke Api Key",
+            "description": {},
+            "url": {
+              "path": [
+                "internal",
+                "api-keys",
+                ":key_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "key_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) Internal API Key for authentication",
+                "key": "x-api-key",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "981ecec7-4e67-4e5d-858a-0765f68cc4c7",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "internal",
+                    "api-keys",
+                    ":key_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "key_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Internal API Key for authentication",
+                    "key": "x-api-key",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"key_0\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b8d6a40b-32cb-4e45-ada3-784cafa67a51",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "internal",
+                    "api-keys",
+                    ":key_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "key_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Internal API Key for authentication",
+                    "key": "x-api-key",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\",\n      \"input\": {},\n      \"ctx\": {}\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\",\n      \"input\": {},\n      \"ctx\": {}\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8f5dd999-3824-4c92-8484-be05b729bd60",
+          "name": "List User Api Keys",
+          "request": {
+            "name": "List User Api Keys",
+            "description": {},
+            "url": {
+              "path": [
+                "internal",
+                "api-keys",
+                "user",
+                ":user_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "org_id",
+                  "value": "<string>",
+                  "description": "Organization ID to filter by"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "user_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) Internal API Key for authentication",
+                "key": "x-api-key",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "fb16a930-25fa-491f-94e6-3a08ea7793d7",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "internal",
+                    "api-keys",
+                    "user",
+                    ":user_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "org_id",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "user_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Internal API Key for authentication",
+                    "key": "x-api-key",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"key_id\": \"string\",\n    \"name\": \"string\",\n    \"created_at\": \"1951-08-31T19:08:44.781Z\",\n    \"last_used_at\": \"1963-02-16T09:53:04.200Z\",\n    \"key_prefix\": \"string\",\n    \"key_suffix\": \"string\"\n  },\n  {\n    \"key_id\": \"string\",\n    \"name\": \"string\",\n    \"created_at\": \"2014-09-08T13:52:58.253Z\",\n    \"last_used_at\": \"1990-06-02T08:51:53.307Z\",\n    \"key_prefix\": \"string\",\n    \"key_suffix\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2a34e7f0-43fd-4eb2-aefd-1969e6d89c18",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "internal",
+                    "api-keys",
+                    "user",
+                    ":user_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "org_id",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "user_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Internal API Key for authentication",
+                    "key": "x-api-key",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\",\n      \"input\": {},\n      \"ctx\": {}\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\",\n      \"input\": {},\n      \"ctx\": {}\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0d4fe496-0f0c-4d76-980f-83fc17e3d584",
+          "name": "Create Video",
+          "request": {
+            "name": "Create Video",
+            "description": {},
+            "url": {
+              "path": [
+                "internal",
+                "videos"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) API key or internal API key for authentication",
+                "key": "x-api-key",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "multipart/form-data"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "input_media_files",
+                  "value": "[\"<string>\",\"<string>\"]",
+                  "type": "text",
+                  "description": "Optional media files to seed into the generated video. Supported media: images, videos, and audio."
+                },
+                {
+                  "key": "input_media_file_descriptions",
+                  "value": "[\"<string>\",\"<string>\"]",
+                  "type": "text",
+                  "description": "Optional descriptions aligned by index with input_media_files."
+                },
+                {
+                  "key": "input_media_urls",
+                  "value": "[\"<string>\",\"<string>\"]",
+                  "type": "text",
+                  "description": "Optional HTTP(S) media URLs to seed into the generated video."
+                },
+                {
+                  "key": "input_media_url_descriptions",
+                  "value": "[\"<string>\",\"<string>\"]",
+                  "type": "text",
+                  "description": "Optional descriptions aligned by index with input_media_urls."
+                },
+                {
+                  "key": "prompt",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "Optional generation prompt."
+                },
+                {
+                  "key": "video_style_id",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "Optional video style ID."
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "0ddb6fa1-f0bf-4300-9a35-13ed1d60b2bb",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "internal",
+                    "videos"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) API key or internal API key for authentication",
+                    "key": "x-api-key",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "Optional media files to seed into the generated video. Supported media: images, videos, and audio.",
+                        "type": "text/plain"
+                      },
+                      "key": "input_media_files",
+                      "value": "[\"<string>\",\"<string>\"]",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Optional descriptions aligned by index with input_media_files.",
+                        "type": "text/plain"
+                      },
+                      "key": "input_media_file_descriptions",
+                      "value": "[\"<string>\",\"<string>\"]",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Optional HTTP(S) media URLs to seed into the generated video.",
+                        "type": "text/plain"
+                      },
+                      "key": "input_media_urls",
+                      "value": "[\"<string>\",\"<string>\"]",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Optional descriptions aligned by index with input_media_urls.",
+                        "type": "text/plain"
+                      },
+                      "key": "input_media_url_descriptions",
+                      "value": "[\"<string>\",\"<string>\"]",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Optional generation prompt.",
+                        "type": "text/plain"
+                      },
+                      "key": "prompt",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Optional video style ID.",
+                        "type": "text/plain"
+                      },
+                      "key": "video_style_id",
+                      "value": "<string>",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"video_abc123def456\",\n  \"status\": \"COMPLETE\",\n  \"created_at\": 1730822400,\n  \"video_id\": \"string\",\n  \"object\": \"video\",\n  \"completed_at\": 167,\n  \"progress\": 4041,\n  \"error\": {\n    \"code\": \"rate_limit_exceeded\",\n    \"message\": \"Rate limit exceeded. Please try again later.\"\n  },\n  \"model\": \"string\",\n  \"source_video_id\": \"string\",\n  \"caption_template_id\": \"string\",\n  \"share_link_url\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6972117c-9626-4357-975c-43ae189a8e13",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "internal",
+                    "videos"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) API key or internal API key for authentication",
+                    "key": "x-api-key",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "Optional media files to seed into the generated video. Supported media: images, videos, and audio.",
+                        "type": "text/plain"
+                      },
+                      "key": "input_media_files",
+                      "value": "[\"<string>\",\"<string>\"]",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Optional descriptions aligned by index with input_media_files.",
+                        "type": "text/plain"
+                      },
+                      "key": "input_media_file_descriptions",
+                      "value": "[\"<string>\",\"<string>\"]",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Optional HTTP(S) media URLs to seed into the generated video.",
+                        "type": "text/plain"
+                      },
+                      "key": "input_media_urls",
+                      "value": "[\"<string>\",\"<string>\"]",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Optional descriptions aligned by index with input_media_urls.",
+                        "type": "text/plain"
+                      },
+                      "key": "input_media_url_descriptions",
+                      "value": "[\"<string>\",\"<string>\"]",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Optional generation prompt.",
+                        "type": "text/plain"
+                      },
+                      "key": "prompt",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Optional video style ID.",
+                        "type": "text/plain"
+                      },
+                      "key": "video_style_id",
+                      "value": "<string>",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\",\n      \"input\": {},\n      \"ctx\": {}\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\",\n      \"input\": {},\n      \"ctx\": {}\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "bb7bf483-36bb-4b98-be3e-a4d89f07ae8b",
+          "name": "Get Video",
+          "request": {
+            "name": "Get Video",
+            "description": {},
+            "url": {
+              "path": [
+                "internal",
+                "videos",
+                ":video_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "video_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) API key or internal API key for authentication",
+                "key": "x-api-key",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a3cfdb23-8219-44ab-966a-3594ed1c29f0",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "internal",
+                    "videos",
+                    ":video_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "video_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) API key or internal API key for authentication",
+                    "key": "x-api-key",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"video_abc123def456\",\n  \"status\": \"COMPLETE\",\n  \"created_at\": 1730822400,\n  \"video_id\": \"string\",\n  \"object\": \"video\",\n  \"completed_at\": 167,\n  \"progress\": 4041,\n  \"error\": {\n    \"code\": \"rate_limit_exceeded\",\n    \"message\": \"Rate limit exceeded. Please try again later.\"\n  },\n  \"model\": \"string\",\n  \"source_video_id\": \"string\",\n  \"caption_template_id\": \"string\",\n  \"share_link_url\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "62d16161-c726-433c-a821-b41f8969c499",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "internal",
+                    "videos",
+                    ":video_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "video_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) API key or internal API key for authentication",
+                    "key": "x-api-key",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\",\n      \"input\": {},\n      \"ctx\": {}\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\",\n      \"input\": {},\n      \"ctx\": {}\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3041a068-a0a2-44f0-98f5-700106ae01dc",
+          "name": "Create Rate Limit Override",
+          "request": {
+            "name": "Create Rate Limit Override",
+            "description": {
+              "content": "Create a new rate limit override for an org or user.\n\nThis endpoint requires internal API key authentication.\n\nExample request:\n```json\n{\n  \"identifier\": \"org:org_123\",\n  \"endpointLimits\": {\n    \"generation\": {\n      \"maxTokens\": 100,\n      \"refillRatePerSecond\": 5.0\n    },\n    \"status\": {\n      \"maxTokens\": 200,\n      \"refillRatePerSecond\": 50.0\n    }\n  },\n  \"note\": \"Enterprise plan with higher limits\"\n}\n```",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "internal",
+                "rate-limits",
+                "overrides"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) Internal API Key for authentication",
+                "key": "x-api-key",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"identifier\": \"<string>\",\n  \"endpointLimits\": {\n    \"generation\": {\n      \"max_tokens\": \"<integer>\",\n      \"refill_rate_per_second\": \"<number>\"\n    },\n    \"status\": {\n      \"max_tokens\": \"<integer>\",\n      \"refill_rate_per_second\": \"<number>\"\n    },\n    \"videoCaptionsSubmit\": {\n      \"max_tokens\": \"<integer>\",\n      \"refill_rate_per_second\": \"<number>\"\n    },\n    \"metaTextOverlaySubmit\": {\n      \"max_tokens\": \"<integer>\",\n      \"refill_rate_per_second\": \"<number>\"\n    },\n    \"metaTextOverlayPoll\": {\n      \"max_tokens\": \"<integer>\",\n      \"refill_rate_per_second\": \"<number>\"\n    }\n  },\n  \"note\": \"\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "a3fefc37-80f2-4e8c-9759-145654e45e85",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "internal",
+                    "rate-limits",
+                    "overrides"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Internal API Key for authentication",
+                    "key": "x-api-key",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"identifier\": \"org:org_123\",\n  \"endpointLimits\": {\n    \"generation\": {\n      \"max_tokens\": 6539,\n      \"refill_rate_per_second\": 5391.561088270729\n    },\n    \"status\": {\n      \"max_tokens\": 9089,\n      \"refill_rate_per_second\": 6188.936037255912\n    },\n    \"videoCaptionsSubmit\": {\n      \"max_tokens\": 7986,\n      \"refill_rate_per_second\": 1198.28025916084\n    },\n    \"metaTextOverlaySubmit\": {\n      \"max_tokens\": 1195,\n      \"refill_rate_per_second\": 3944.8633162169876\n    },\n    \"metaTextOverlayPoll\": {\n      \"max_tokens\": 2025,\n      \"refill_rate_per_second\": 144.3302543042968\n    }\n  },\n  \"note\": \"\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"identifier\": \"string\",\n  \"endpointLimits\": {\n    \"generation\": {\n      \"max_tokens\": 2908,\n      \"refill_rate_per_second\": 4985.700135116741\n    },\n    \"status\": {\n      \"max_tokens\": 8150,\n      \"refill_rate_per_second\": 77.88209259759759\n    },\n    \"videoCaptionsSubmit\": {\n      \"max_tokens\": 3763,\n      \"refill_rate_per_second\": 3384.9933222422933\n    },\n    \"metaTextOverlaySubmit\": {\n      \"max_tokens\": 8401,\n      \"refill_rate_per_second\": 3403.2985011089368\n    },\n    \"metaTextOverlayPoll\": {\n      \"max_tokens\": 5550,\n      \"refill_rate_per_second\": 4382.245401510785\n    }\n  },\n  \"createdAt\": \"1995-06-27T07:06:14.855Z\",\n  \"createdBy\": \"string\",\n  \"updatedAt\": \"2004-09-25T16:41:35.445Z\",\n  \"updatedBy\": \"string\",\n  \"note\": \"\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "fcba82ca-132b-450f-9633-cbd01f28e8ce",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "internal",
+                    "rate-limits",
+                    "overrides"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Internal API Key for authentication",
+                    "key": "x-api-key",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"identifier\": \"org:org_123\",\n  \"endpointLimits\": {\n    \"generation\": {\n      \"max_tokens\": 6539,\n      \"refill_rate_per_second\": 5391.561088270729\n    },\n    \"status\": {\n      \"max_tokens\": 9089,\n      \"refill_rate_per_second\": 6188.936037255912\n    },\n    \"videoCaptionsSubmit\": {\n      \"max_tokens\": 7986,\n      \"refill_rate_per_second\": 1198.28025916084\n    },\n    \"metaTextOverlaySubmit\": {\n      \"max_tokens\": 1195,\n      \"refill_rate_per_second\": 3944.8633162169876\n    },\n    \"metaTextOverlayPoll\": {\n      \"max_tokens\": 2025,\n      \"refill_rate_per_second\": 144.3302543042968\n    }\n  },\n  \"note\": \"\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\",\n      \"input\": {},\n      \"ctx\": {}\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\",\n      \"input\": {},\n      \"ctx\": {}\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "78ff8469-d070-4baf-8775-69b9b13ddb04",
+          "name": "List Rate Limit Overrides",
+          "request": {
+            "name": "List Rate Limit Overrides",
+            "description": {
+              "content": "List all rate limit overrides, optionally filtered by type.\n\nQuery parameters:\n- override_type: 'org' or 'user' to filter results\n- limit: Maximum number of results (default: 100, max: 1000)",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "internal",
+                "rate-limits",
+                "overrides"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "override_type",
+                  "value": "<string>",
+                  "description": "Filter by type: 'org' or 'user'. If not provided, returns all overrides."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "100",
+                  "description": "Maximum number of results"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) Internal API Key for authentication",
+                "key": "x-api-key",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "7c58739e-30cf-4be2-a678-f7922fc6347a",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "internal",
+                    "rate-limits",
+                    "overrides"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "override_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "100"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Internal API Key for authentication",
+                    "key": "x-api-key",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"identifier\": \"string\",\n    \"endpointLimits\": {\n      \"generation\": {\n        \"max_tokens\": 428,\n        \"refill_rate_per_second\": 3561.6087706417143\n      },\n      \"status\": {\n        \"max_tokens\": 6882,\n        \"refill_rate_per_second\": 4327.900149584656\n      },\n      \"videoCaptionsSubmit\": {\n        \"max_tokens\": 3487,\n        \"refill_rate_per_second\": 7127.1012778726135\n      },\n      \"metaTextOverlaySubmit\": {\n        \"max_tokens\": 2769,\n        \"refill_rate_per_second\": 5721.413364918944\n      },\n      \"metaTextOverlayPoll\": {\n        \"max_tokens\": 9473,\n        \"refill_rate_per_second\": 8006.335478463152\n      }\n    },\n    \"createdAt\": \"1948-03-07T20:49:59.272Z\",\n    \"createdBy\": \"string\",\n    \"updatedAt\": \"1978-10-06T17:22:58.686Z\",\n    \"updatedBy\": \"string\",\n    \"note\": \"\"\n  },\n  {\n    \"identifier\": \"string\",\n    \"endpointLimits\": {\n      \"generation\": {\n        \"max_tokens\": 8640,\n        \"refill_rate_per_second\": 5571.297926467079\n      },\n      \"status\": {\n        \"max_tokens\": 7761,\n        \"refill_rate_per_second\": 3702.4554326662474\n      },\n      \"videoCaptionsSubmit\": {\n        \"max_tokens\": 882,\n        \"refill_rate_per_second\": 5925.489523230596\n      },\n      \"metaTextOverlaySubmit\": {\n        \"max_tokens\": 760,\n        \"refill_rate_per_second\": 1657.622225480835\n      },\n      \"metaTextOverlayPoll\": {\n        \"max_tokens\": 1461,\n        \"refill_rate_per_second\": 9185.097453075965\n      }\n    },\n    \"createdAt\": \"1959-07-02T22:48:20.113Z\",\n    \"createdBy\": \"string\",\n    \"updatedAt\": \"1989-02-21T20:54:41.839Z\",\n    \"updatedBy\": \"string\",\n    \"note\": \"\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c09ce607-4689-44bb-8ef0-3456b20581e4",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "internal",
+                    "rate-limits",
+                    "overrides"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "override_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "100"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Internal API Key for authentication",
+                    "key": "x-api-key",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\",\n      \"input\": {},\n      \"ctx\": {}\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\",\n      \"input\": {},\n      \"ctx\": {}\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4c68c61e-8ed1-45c0-ac06-55c15be68bea",
+          "name": "Get Rate Limit Override",
+          "request": {
+            "name": "Get Rate Limit Override",
+            "description": {
+              "content": "Get a rate limit override by identifier.\n\nIdentifier format: 'org:<org_id>' or 'user:<user_id>'\n\nExample: /internal/rate-limits/overrides/org:org_123",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "internal",
+                "rate-limits",
+                "overrides",
+                ":identifier"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "identifier",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) Internal API Key for authentication",
+                "key": "x-api-key",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6bd2490b-02c7-4488-86c1-791dffb8dbbc",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "internal",
+                    "rate-limits",
+                    "overrides",
+                    ":identifier"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "identifier",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Internal API Key for authentication",
+                    "key": "x-api-key",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"identifier\": \"string\",\n  \"endpointLimits\": {\n    \"generation\": {\n      \"max_tokens\": 2908,\n      \"refill_rate_per_second\": 4985.700135116741\n    },\n    \"status\": {\n      \"max_tokens\": 8150,\n      \"refill_rate_per_second\": 77.88209259759759\n    },\n    \"videoCaptionsSubmit\": {\n      \"max_tokens\": 3763,\n      \"refill_rate_per_second\": 3384.9933222422933\n    },\n    \"metaTextOverlaySubmit\": {\n      \"max_tokens\": 8401,\n      \"refill_rate_per_second\": 3403.2985011089368\n    },\n    \"metaTextOverlayPoll\": {\n      \"max_tokens\": 5550,\n      \"refill_rate_per_second\": 4382.245401510785\n    }\n  },\n  \"createdAt\": \"1995-06-27T07:06:14.855Z\",\n  \"createdBy\": \"string\",\n  \"updatedAt\": \"2004-09-25T16:41:35.445Z\",\n  \"updatedBy\": \"string\",\n  \"note\": \"\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "36baad06-5233-4f0d-84fc-535a5af61679",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "internal",
+                    "rate-limits",
+                    "overrides",
+                    ":identifier"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "identifier",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Internal API Key for authentication",
+                    "key": "x-api-key",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\",\n      \"input\": {},\n      \"ctx\": {}\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\",\n      \"input\": {},\n      \"ctx\": {}\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "fda4fb1c-22b3-4f92-9c37-0d7ac676924c",
+          "name": "Update Rate Limit Override",
+          "request": {
+            "name": "Update Rate Limit Override",
+            "description": {
+              "content": "Update an existing rate limit override.\n\nOnly the fields provided in the request will be updated.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "internal",
+                "rate-limits",
+                "overrides",
+                ":identifier"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "identifier",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) Internal API Key for authentication",
+                "key": "x-api-key",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"endpointLimits\": {\n    \"generation\": {\n      \"max_tokens\": \"<integer>\",\n      \"refill_rate_per_second\": \"<number>\"\n    },\n    \"status\": {\n      \"max_tokens\": \"<integer>\",\n      \"refill_rate_per_second\": \"<number>\"\n    },\n    \"videoCaptionsSubmit\": {\n      \"max_tokens\": \"<integer>\",\n      \"refill_rate_per_second\": \"<number>\"\n    },\n    \"metaTextOverlaySubmit\": {\n      \"max_tokens\": \"<integer>\",\n      \"refill_rate_per_second\": \"<number>\"\n    },\n    \"metaTextOverlayPoll\": {\n      \"max_tokens\": \"<integer>\",\n      \"refill_rate_per_second\": \"<number>\"\n    }\n  },\n  \"note\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "c456ba3f-8cf0-4ba1-b9ca-6056512cc97d",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "internal",
+                    "rate-limits",
+                    "overrides",
+                    ":identifier"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "identifier",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Internal API Key for authentication",
+                    "key": "x-api-key",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"endpointLimits\": {\n    \"generation\": {\n      \"max_tokens\": 1582,\n      \"refill_rate_per_second\": 6659.84893584569\n    },\n    \"status\": {\n      \"max_tokens\": 1974,\n      \"refill_rate_per_second\": 2961.638380695442\n    },\n    \"videoCaptionsSubmit\": {\n      \"max_tokens\": 4654,\n      \"refill_rate_per_second\": 1867.2977418931791\n    },\n    \"metaTextOverlaySubmit\": {\n      \"max_tokens\": 3885,\n      \"refill_rate_per_second\": 3920.8353219759183\n    },\n    \"metaTextOverlayPoll\": {\n      \"max_tokens\": 7053,\n      \"refill_rate_per_second\": 1743.9581615079214\n    }\n  },\n  \"note\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"identifier\": \"string\",\n  \"endpointLimits\": {\n    \"generation\": {\n      \"max_tokens\": 2908,\n      \"refill_rate_per_second\": 4985.700135116741\n    },\n    \"status\": {\n      \"max_tokens\": 8150,\n      \"refill_rate_per_second\": 77.88209259759759\n    },\n    \"videoCaptionsSubmit\": {\n      \"max_tokens\": 3763,\n      \"refill_rate_per_second\": 3384.9933222422933\n    },\n    \"metaTextOverlaySubmit\": {\n      \"max_tokens\": 8401,\n      \"refill_rate_per_second\": 3403.2985011089368\n    },\n    \"metaTextOverlayPoll\": {\n      \"max_tokens\": 5550,\n      \"refill_rate_per_second\": 4382.245401510785\n    }\n  },\n  \"createdAt\": \"1995-06-27T07:06:14.855Z\",\n  \"createdBy\": \"string\",\n  \"updatedAt\": \"2004-09-25T16:41:35.445Z\",\n  \"updatedBy\": \"string\",\n  \"note\": \"\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "47dd965f-f795-48d7-92c6-a8e0609efaed",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "internal",
+                    "rate-limits",
+                    "overrides",
+                    ":identifier"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "identifier",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Internal API Key for authentication",
+                    "key": "x-api-key",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"endpointLimits\": {\n    \"generation\": {\n      \"max_tokens\": 1582,\n      \"refill_rate_per_second\": 6659.84893584569\n    },\n    \"status\": {\n      \"max_tokens\": 1974,\n      \"refill_rate_per_second\": 2961.638380695442\n    },\n    \"videoCaptionsSubmit\": {\n      \"max_tokens\": 4654,\n      \"refill_rate_per_second\": 1867.2977418931791\n    },\n    \"metaTextOverlaySubmit\": {\n      \"max_tokens\": 3885,\n      \"refill_rate_per_second\": 3920.8353219759183\n    },\n    \"metaTextOverlayPoll\": {\n      \"max_tokens\": 7053,\n      \"refill_rate_per_second\": 1743.9581615079214\n    }\n  },\n  \"note\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\",\n      \"input\": {},\n      \"ctx\": {}\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\",\n      \"input\": {},\n      \"ctx\": {}\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f5d3f717-eaf8-4d4e-96fe-ec51e7add1a0",
+          "name": "Delete Rate Limit Override",
+          "request": {
+            "name": "Delete Rate Limit Override",
+            "description": {
+              "content": "Delete a rate limit override.\n\nAfter deletion, the org/user will fall back to default rate limits.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "internal",
+                "rate-limits",
+                "overrides",
+                ":identifier"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "identifier",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) Internal API Key for authentication",
+                "key": "x-api-key",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6a2f06b2-ffc8-4c2a-8c71-eaca7c6c9137",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "internal",
+                    "rate-limits",
+                    "overrides",
+                    ":identifier"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "identifier",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Internal API Key for authentication",
+                    "key": "x-api-key",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "781388b2-91cb-4450-8532-7a505e4e7225",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "internal",
+                    "rate-limits",
+                    "overrides",
+                    ":identifier"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "identifier",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Internal API Key for authentication",
+                    "key": "x-api-key",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\",\n      \"input\": {},\n      \"ctx\": {}\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\",\n      \"input\": {},\n      \"ctx\": {}\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "517bda7b-2921-4604-b555-8b49b24f7209",
+          "name": "Invalidate Rate Limit Override Cache",
+          "request": {
+            "name": "Invalidate Rate Limit Override Cache",
+            "description": {
+              "content": "Manually invalidate the cache for a specific rate limit override.\n\nUseful for debugging or forcing a cache refresh.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "internal",
+                "rate-limits",
+                "overrides",
+                ":identifier",
+                "invalidate-cache"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "identifier",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) Internal API Key for authentication",
+                "key": "x-api-key",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "db26c21b-f0b6-45f5-8b4c-25548d9f4046",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "internal",
+                    "rate-limits",
+                    "overrides",
+                    ":identifier",
+                    "invalidate-cache"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "identifier",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Internal API Key for authentication",
+                    "key": "x-api-key",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "cf9b2d6f-a8c3-4bde-9c8c-6c5abb34a746",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "internal",
+                    "rate-limits",
+                    "overrides",
+                    ":identifier",
+                    "invalidate-cache"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "identifier",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Internal API Key for authentication",
+                    "key": "x-api-key",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\",\n      \"input\": {},\n      \"ctx\": {}\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\",\n      \"input\": {},\n      \"ctx\": {}\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "454dd20e-5bcb-49f5-973c-bca3ced1ef97",
+    "name": "Mirage Video Audio internal API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "API for AI-powered video generation",
+      "type": "text/plain"
+    }
+  }
+}

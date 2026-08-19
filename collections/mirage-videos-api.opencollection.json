@@ -1,0 +1,124 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Mirage Video Audio Videos API",
+    "version": "0.0.1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Videos",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Videos",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/videos",
+            "headers": [
+              {
+                "name": "x-api-key",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "after",
+                "value": "",
+                "type": "query",
+                "description": "Return items strictly after this video ID"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Max number of items to return"
+              },
+              {
+                "name": "order",
+                "value": "",
+                "type": "query",
+                "description": "Sort order by creation time"
+              }
+            ]
+          },
+          "docs": "List videos for the authenticated API key with optional pagination.\n\n- Filters by the calling user's ID (and org if present)\n- Ordered by creation time ascending or descending\n- Supports cursor pagination using the `after` video ID"
+        },
+        {
+          "info": {
+            "name": "Create Video",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v1/videos",
+            "headers": [
+              {
+                "name": "x-api-key",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "multipart-form",
+              "data": []
+            }
+          },
+          "docs": "Create Video"
+        },
+        {
+          "info": {
+            "name": "Retrieve Video",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/videos/:video_id",
+            "headers": [
+              {
+                "name": "x-api-key",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "video_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get the status of a video."
+        },
+        {
+          "info": {
+            "name": "Retrieve Video Content",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/videos/:video_id/content",
+            "headers": [
+              {
+                "name": "x-api-key",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "video_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Download the video file (redirects to video URL)."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

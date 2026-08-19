@@ -2,10 +2,9 @@ generated: '2026-07-20'
 method: derived
 status: candidate
 source: openapi/mirage-openapi-original.json
-note: >-
-  No official hosted/remote MCP server was found for Mirage/Captions. This is a
-  candidate tool surface derived from the public Mirage Video API operations
-  (the /internal operations are excluded). Auth is an x-api-key header.
+note: No official hosted/remote MCP server was found for Mirage/Captions. This is a candidate tool surface
+  derived from the public Mirage Video API operations (the /internal operations are excluded). Auth is
+  an x-api-key header.
 server:
   name: mirage
   transport: http
@@ -40,3 +39,9 @@ tools:
 - name: get_meta_text_overlay
   description: Get a meta text overlay job by id.
   source_operation: openapi/mirage-openapi-original.json#get_meta_text_overlay_v1_meta_text_overlays__text_overlay_id__get
+deployment:
+  mode: none
+  verified: derived
+  tools: 10
+  checked: '2026-08-12'
+  source: catalog MCP census

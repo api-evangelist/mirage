@@ -1,0 +1,94 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Mirage Video Audio Video Captions API",
+    "version": "0.0.1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Video Captions",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Add Captions to a Video",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v1/videos/captions",
+            "headers": [
+              {
+                "name": "x-api-key",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "multipart-form",
+              "data": []
+            }
+          },
+          "docs": "Create a captioned video from either an uploaded video file or an existing video ID.\n\nYou must provide exactly one of:\n- `video`: A video file upload (.mp4 or .mov), max 50mb\n- `video_id`: An existing video ID to add captions to\n\nIf providing `video_id`, the source video must have status COMPLETE before it can be captioned.\n\nTo fetch the captioned video, use the `GET videos/{video_id}` endpoint."
+        },
+        {
+          "info": {
+            "name": "List Caption Templates",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/videos/captions/templates",
+            "headers": [
+              {
+                "name": "x-api-key",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Max number of items to return"
+              },
+              {
+                "name": "after",
+                "value": "",
+                "type": "query",
+                "description": "Return items strictly after this template ID"
+              }
+            ]
+          },
+          "docs": "List available caption style templates.\n\nReturns a paginated list of templates that can be used when creating captioned videos."
+        },
+        {
+          "info": {
+            "name": "Retrieve Caption Template",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/videos/captions/templates/:template_id",
+            "headers": [
+              {
+                "name": "x-api-key",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "template_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve Caption Template"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

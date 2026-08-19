@@ -1,0 +1,63 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Mirage Video Audio Meta Text Overlays API",
+    "version": "0.0.1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Meta Text Overlays",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create Meta Text Overlay",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v1/meta/text_overlays",
+            "headers": [
+              {
+                "name": "x-api-key",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "multipart-form",
+              "data": []
+            }
+          },
+          "docs": "Create Meta Text Overlay"
+        },
+        {
+          "info": {
+            "name": "Retrieve Meta Text Overlay",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/meta/text_overlays/:text_overlay_id",
+            "headers": [
+              {
+                "name": "x-api-key",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "text_overlay_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve Meta Text Overlay"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
