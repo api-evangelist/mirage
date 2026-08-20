@@ -46,6 +46,16 @@ tags:
 - Captions
 - Media
 - Content Creation
+- Text-to-Speech
+- Machine-Learning
+tags_raw:
+- Company
+- Artificial Intelligence
+- Video
+- Video Generation
+- Captions
+- Media
+- Content Creation
 - Text to Speech
 - Machine Learning
 maintainers:
@@ -74,6 +84,8 @@ apis:
   humanURL: https://captions.ai/help/api-reference
   baseURL: https://api.mirage.app
   tags:
+  - Health
+  tags_raw:
   - health
   properties:
   - type: OpenAPI
@@ -88,6 +100,8 @@ apis:
   humanURL: https://captions.ai/help/api-reference
   baseURL: https://api.mirage.app
   tags:
+  - Internal
+  tags_raw:
   - internal
   properties:
   - type: OpenAPI
@@ -116,6 +130,8 @@ apis:
   humanURL: https://captions.ai/help/api-reference
   baseURL: https://api.mirage.app
   tags:
+  - Root
+  tags_raw:
   - root
   properties:
   - type: OpenAPI
