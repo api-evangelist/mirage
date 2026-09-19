@@ -173,6 +173,8 @@ apis:
   humanURL: https://captions.ai/help/api-reference
   baseURL: https://api.mirage.app
   tags:
+  - Video
+  tags_raw:
   - Videos
   properties:
   - type: OpenAPI
