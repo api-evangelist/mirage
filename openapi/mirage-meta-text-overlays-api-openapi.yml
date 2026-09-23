@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Mirage Video Audio Meta Text Overlays API
+  title: Mirage Video Meta Text Overlays API
   description: API for AI-powered video generation
   version: 0.0.1
 tags:
@@ -76,15 +76,6 @@ paths:
                 $ref: '#/components/schemas/HTTPValidationError'
 components:
   schemas:
-    HTTPValidationError:
-      properties:
-        detail:
-          items:
-            $ref: '#/components/schemas/ValidationError'
-          type: array
-          title: Detail
-      type: object
-      title: HTTPValidationError
     ValidationError:
       properties:
         loc:
@@ -215,26 +206,6 @@ components:
         object: text_overlay
         results: []
         status: QUEUED
-    MAVideoError:
-      properties:
-        code:
-          type: string
-          title: Code
-          description: Error code
-          examples:
-          - rate_limit_exceeded
-        message:
-          type: string
-          title: Message
-          description: Error message
-          examples:
-          - Rate limit exceeded. Please try again later.
-      type: object
-      required:
-      - code
-      - message
-      title: MAVideoError
-      description: Error payload that explains why generation failed, if applicable
     MetaTextOverlayResult:
       properties:
         index:
@@ -270,3 +241,32 @@ components:
       - status
       title: MetaTextOverlayResult
       description: Per-text result for a Meta text overlay job.
+    MAVideoError:
+      properties:
+        code:
+          type: string
+          title: Code
+          description: Error code
+          examples:
+          - rate_limit_exceeded
+        message:
+          type: string
+          title: Message
+          description: Error message
+          examples:
+          - Rate limit exceeded. Please try again later.
+      type: object
+      required:
+      - code
+      - message
+      title: MAVideoError
+      description: Error payload that explains why generation failed, if applicable
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          type: array
+          title: Detail
+      type: object
+      title: HTTPValidationError

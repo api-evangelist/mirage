@@ -1,15 +1,15 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Mirage Video Audio root API
+  title: Mirage Video Root API
   description: API for AI-powered video generation
   version: 0.0.1
 tags:
-- name: root
+- name: Root
 paths:
   /:
     get:
       tags:
-      - root
+      - Root
       summary: Root
       description: Root endpoint providing API information and navigation
       operationId: root__get

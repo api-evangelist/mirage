@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Mirage Video Audio Videos API
+  title: Mirage Video Videos API
   description: API for AI-powered video generation
   version: 0.0.1
 tags:
@@ -182,15 +182,6 @@ paths:
                 $ref: '#/components/schemas/HTTPValidationError'
 components:
   schemas:
-    HTTPValidationError:
-      properties:
-        detail:
-          items:
-            $ref: '#/components/schemas/ValidationError'
-          type: array
-          title: Detail
-      type: object
-      title: HTTPValidationError
     ValidationError:
       properties:
         loc:
@@ -217,51 +208,6 @@ components:
       - msg
       - type
       title: ValidationError
-    Body_create_video_generation_v1_videos_post:
-      properties:
-        audio_reference:
-          type: string
-          contentMediaType: application/octet-stream
-          title: Audio Reference
-          description: Audio file (WAV or MP3)
-        image_reference:
-          anyOf:
-          - type: string
-            contentMediaType: application/octet-stream
-          - type: 'null'
-          title: Image Reference
-          description: Image appearance reference (JPEG or PNG).
-        model:
-          type: string
-          const: mirage-video-1-latest
-          title: Model
-          description: Model to use for generation
-          default: mirage-video-1-latest
-      type: object
-      required:
-      - audio_reference
-      - image_reference
-      title: Body_create_video_generation_v1_videos_post
-    MAVideoError:
-      properties:
-        code:
-          type: string
-          title: Code
-          description: Error code
-          examples:
-          - rate_limit_exceeded
-        message:
-          type: string
-          title: Message
-          description: Error message
-          examples:
-          - Rate limit exceeded. Please try again later.
-      type: object
-      required:
-      - code
-      - message
-      title: MAVideoError
-      description: Error payload that explains why generation failed, if applicable
     MAVideo:
       properties:
         id:
@@ -379,3 +325,57 @@ components:
         source_video_id: video_abc123def456
         status: PROCESSING
         video_id: video_xyz789
+    MAVideoError:
+      properties:
+        code:
+          type: string
+          title: Code
+          description: Error code
+          examples:
+          - rate_limit_exceeded
+        message:
+          type: string
+          title: Message
+          description: Error message
+          examples:
+          - Rate limit exceeded. Please try again later.
+      type: object
+      required:
+      - code
+      - message
+      title: MAVideoError
+      description: Error payload that explains why generation failed, if applicable
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          type: array
+          title: Detail
+      type: object
+      title: HTTPValidationError
+    Body_create_video_generation_v1_videos_post:
+      properties:
+        audio_reference:
+          type: string
+          contentMediaType: application/octet-stream
+          title: Audio Reference
+          description: Audio file (WAV or MP3)
+        image_reference:
+          anyOf:
+          - type: string
+            contentMediaType: application/octet-stream
+          - type: 'null'
+          title: Image Reference
+          description: Image appearance reference (JPEG or PNG).
+        model:
+          type: string
+          const: mirage-video-1-latest
+          title: Model
+          description: Model to use for generation
+          default: mirage-video-1-latest
+      type: object
+      required:
+      - audio_reference
+      - image_reference
+      title: Body_create_video_generation_v1_videos_post

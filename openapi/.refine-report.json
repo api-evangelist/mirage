@@ -1,26 +1,39 @@
 {
   "provider": "mirage",
   "sources": [
-    "mirage-audio-api-openapi.yml",
-    "mirage-health-api-openapi.yml",
-    "mirage-internal-api-openapi.yml",
-    "mirage-meta-text-overlays-api-openapi.yml",
-    "mirage-root-api-openapi.yml",
-    "mirage-video-captions-api-openapi.yml",
-    "mirage-videos-api-openapi.yml"
+    "_original/mirage-openapi-original.json"
   ],
   "outputs": [
     "mirage-audio-api-openapi.yml",
+    "mirage-meta-text-overlays-api-openapi.yml",
+    "mirage-video-captions-api-openapi.yml",
+    "mirage-videos-api-openapi.yml",
     "mirage-health-api-openapi.yml",
     "mirage-internal-api-openapi.yml",
-    "mirage-meta-text-overlays-api-openapi.yml",
-    "mirage-root-api-openapi.yml",
-    "mirage-video-captions-api-openapi.yml",
-    "mirage-videos-api-openapi.yml"
+    "mirage-root-api-openapi.yml"
   ],
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "mirage-openapi-original.json: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "mirage-openapi-original.json: declared missing tag: Audio",
+    "mirage-openapi-original.json: declared missing tag: Meta Text Overlays",
+    "mirage-openapi-original.json: declared missing tag: Video Captions",
+    "mirage-openapi-original.json: declared missing tag: Videos",
+    "mirage-openapi-original.json: declared missing tag: health",
+    "mirage-openapi-original.json: declared missing tag: internal",
+    "mirage-openapi-original.json: declared missing tag: root",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "mirage-audio-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "mirage-health-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "mirage-internal-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "mirage-meta-text-overlays-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "mirage-root-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "mirage-video-captions-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "mirage-videos-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }
