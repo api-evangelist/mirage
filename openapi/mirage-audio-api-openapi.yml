@@ -65,6 +65,27 @@ components:
           title: Detail
       type: object
       title: HTTPValidationError
+    TTSRequest:
+      properties:
+        text:
+          type: string
+          title: Text
+          description: The text to convert to speech
+          examples:
+          - Hello, welcome to Mirage!
+        model:
+          type: string
+          const: mirage-audio-1
+          title: Model
+          description: TTS model to use for generation
+          examples:
+          - mirage-audio-1
+      type: object
+      required:
+      - text
+      - model
+      title: TTSRequest
+      description: Request body for text-to-speech generation
     ValidationError:
       properties:
         loc:
@@ -91,24 +112,3 @@ components:
       - msg
       - type
       title: ValidationError
-    TTSRequest:
-      properties:
-        text:
-          type: string
-          title: Text
-          description: The text to convert to speech
-          examples:
-          - Hello, welcome to Mirage!
-        model:
-          type: string
-          const: mirage-audio-1
-          title: Model
-          description: TTS model to use for generation
-          examples:
-          - mirage-audio-1
-      type: object
-      required:
-      - text
-      - model
-      title: TTSRequest
-      description: Request body for text-to-speech generation

@@ -143,72 +143,6 @@ paths:
                 $ref: '#/components/schemas/HTTPValidationError'
 components:
   schemas:
-    ValidationError:
-      properties:
-        loc:
-          items:
-            anyOf:
-            - type: string
-            - type: integer
-          type: array
-          title: Location
-        msg:
-          type: string
-          title: Message
-        type:
-          type: string
-          title: Error Type
-        input:
-          title: Input
-        ctx:
-          type: object
-          title: Context
-      type: object
-      required:
-      - loc
-      - msg
-      - type
-      title: ValidationError
-    MACaptionTemplate:
-      properties:
-        id:
-          type: string
-          title: Id
-          description: Unique template identifier
-          examples:
-          - ctpl_123456789abcdefg
-        object:
-          type: string
-          const: caption_template
-          title: Object
-          default: caption_template
-        name:
-          type: string
-          title: Name
-          description: Human-readable template name
-          examples:
-          - Bold White
-        preview_url:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Preview Url
-          description: URL to a preview video of the template
-          examples:
-          - https://captions-cdn.xyz/studio-assets/captions-style-previews/1FA3A381-5DDF-4ECD-936B-63D7CF16DEB0.mp4
-        created_at:
-          type: integer
-          title: Created At
-          description: When the template was created (unix timestamp)
-          examples:
-          - 1730000000
-      type: object
-      required:
-      - id
-      - name
-      - created_at
-      title: MACaptionTemplate
-      description: Represents a caption style template
     MACaptionTemplateList:
       properties:
         data:
@@ -232,6 +166,31 @@ components:
       - has_more
       title: MACaptionTemplateList
       description: Paginated list of caption templates
+    Body_create_captioned_video_v1_videos_captions_post:
+      properties:
+        caption_template_id:
+          type: string
+          title: Caption Template Id
+          description: Caption style template ID
+          examples:
+          - ctpl_yvE0ZnYzEj6ClCD2ee1f
+        video:
+          anyOf:
+          - type: string
+            contentMediaType: application/octet-stream
+          - type: 'null'
+          title: Video
+          description: Video file to caption (MP4, MOV). Must be 9:16 aspect ratio. Max 50mb. Either `video` or `video_id` must be provided.
+        video_id:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Video Id
+          description: Existing video ID to add captions to. Either `video` or `video_id` must be provided.
+      type: object
+      required:
+      - caption_template_id
+      title: Body_create_captioned_video_v1_videos_captions_post
     MAVideo:
       properties:
         id:
@@ -349,6 +308,81 @@ components:
         source_video_id: video_abc123def456
         status: PROCESSING
         video_id: video_xyz789
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          type: array
+          title: Detail
+      type: object
+      title: HTTPValidationError
+    ValidationError:
+      properties:
+        loc:
+          items:
+            anyOf:
+            - type: string
+            - type: integer
+          type: array
+          title: Location
+        msg:
+          type: string
+          title: Message
+        type:
+          type: string
+          title: Error Type
+        input:
+          title: Input
+        ctx:
+          type: object
+          title: Context
+      type: object
+      required:
+      - loc
+      - msg
+      - type
+      title: ValidationError
+    MACaptionTemplate:
+      properties:
+        id:
+          type: string
+          title: Id
+          description: Unique template identifier
+          examples:
+          - ctpl_123456789abcdefg
+        object:
+          type: string
+          const: caption_template
+          title: Object
+          default: caption_template
+        name:
+          type: string
+          title: Name
+          description: Human-readable template name
+          examples:
+          - Bold White
+        preview_url:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Preview Url
+          description: URL to a preview video of the template
+          examples:
+          - https://captions-cdn.xyz/studio-assets/captions-style-previews/1FA3A381-5DDF-4ECD-936B-63D7CF16DEB0.mp4
+        created_at:
+          type: integer
+          title: Created At
+          description: When the template was created (unix timestamp)
+          examples:
+          - 1730000000
+      type: object
+      required:
+      - id
+      - name
+      - created_at
+      title: MACaptionTemplate
+      description: Represents a caption style template
     MAVideoError:
       properties:
         code:
@@ -369,37 +403,3 @@ components:
       - message
       title: MAVideoError
       description: Error payload that explains why generation failed, if applicable
-    HTTPValidationError:
-      properties:
-        detail:
-          items:
-            $ref: '#/components/schemas/ValidationError'
-          type: array
-          title: Detail
-      type: object
-      title: HTTPValidationError
-    Body_create_captioned_video_v1_videos_captions_post:
-      properties:
-        caption_template_id:
-          type: string
-          title: Caption Template Id
-          description: Caption style template ID
-          examples:
-          - ctpl_yvE0ZnYzEj6ClCD2ee1f
-        video:
-          anyOf:
-          - type: string
-            contentMediaType: application/octet-stream
-          - type: 'null'
-          title: Video
-          description: Video file to caption (MP4, MOV). Must be 9:16 aspect ratio. Max 50mb. Either `video` or `video_id` must be provided.
-        video_id:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Video Id
-          description: Existing video ID to add captions to. Either `video` or `video_id` must be provided.
-      type: object
-      required:
-      - caption_template_id
-      title: Body_create_captioned_video_v1_videos_captions_post

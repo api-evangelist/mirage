@@ -60,7 +60,7 @@ tags:
 - Media
 - Content Creation
 - Text-to-Speech
-- Machine-Learning
+- Machine Learning
 tags_raw:
 - Company
 - Artificial Intelligence
@@ -71,6 +71,7 @@ tags_raw:
 - Content Creation
 - Text to Speech
 - Machine Learning
+- Machine-Learning
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
@@ -92,7 +93,7 @@ apis:
   - type: APIReference
     url: https://captions.ai/help/api-reference
 - aid: mirage:mirage-health-api
-  name: Mirage health API
+  name: Mirage Health API
   description: The health API from Mirage — 1 operation(s) for health.
   humanURL: https://captions.ai/help/api-reference
   baseURL: https://api.mirage.app
@@ -108,7 +109,7 @@ apis:
   - type: APIReference
     url: https://captions.ai/help/api-reference
 - aid: mirage:mirage-internal-api
-  name: Mirage internal API
+  name: Mirage Internal API
   description: The internal API from Mirage — 8 operation(s) for internal.
   humanURL: https://captions.ai/help/api-reference
   baseURL: https://api.mirage.app
@@ -138,7 +139,7 @@ apis:
   - type: APIReference
     url: https://captions.ai/help/api-reference
 - aid: mirage:mirage-root-api
-  name: Mirage root API
+  name: Mirage Root API
   description: The root API from Mirage — 1 operation(s) for root.
   humanURL: https://captions.ai/help/api-reference
   baseURL: https://api.mirage.app
