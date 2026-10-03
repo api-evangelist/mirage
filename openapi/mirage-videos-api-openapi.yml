@@ -182,31 +182,6 @@ paths:
                 $ref: '#/components/schemas/HTTPValidationError'
 components:
   schemas:
-    Body_create_video_generation_v1_videos_post:
-      properties:
-        audio_reference:
-          type: string
-          contentMediaType: application/octet-stream
-          title: Audio Reference
-          description: Audio file (WAV or MP3)
-        image_reference:
-          anyOf:
-          - type: string
-            contentMediaType: application/octet-stream
-          - type: 'null'
-          title: Image Reference
-          description: Image appearance reference (JPEG or PNG).
-        model:
-          type: string
-          const: mirage-video-1-latest
-          title: Model
-          description: Model to use for generation
-          default: mirage-video-1-latest
-      type: object
-      required:
-      - audio_reference
-      - image_reference
-      title: Body_create_video_generation_v1_videos_post
     MAVideo:
       properties:
         id:
@@ -324,15 +299,31 @@ components:
         source_video_id: video_abc123def456
         status: PROCESSING
         video_id: video_xyz789
-    HTTPValidationError:
+    Body_create_video_generation_v1_videos_post:
       properties:
-        detail:
-          items:
-            $ref: '#/components/schemas/ValidationError'
-          type: array
-          title: Detail
+        audio_reference:
+          type: string
+          contentMediaType: application/octet-stream
+          title: Audio Reference
+          description: Audio file (WAV or MP3)
+        image_reference:
+          anyOf:
+          - type: string
+            contentMediaType: application/octet-stream
+          - type: 'null'
+          title: Image Reference
+          description: Image appearance reference (JPEG or PNG).
+        model:
+          type: string
+          const: mirage-video-1-latest
+          title: Model
+          description: Model to use for generation
+          default: mirage-video-1-latest
       type: object
-      title: HTTPValidationError
+      required:
+      - audio_reference
+      - image_reference
+      title: Body_create_video_generation_v1_videos_post
     ValidationError:
       properties:
         loc:
@@ -359,6 +350,15 @@ components:
       - msg
       - type
       title: ValidationError
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          type: array
+          title: Detail
+      type: object
+      title: HTTPValidationError
     MAVideoError:
       properties:
         code:
