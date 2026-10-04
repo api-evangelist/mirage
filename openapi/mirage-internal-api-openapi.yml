@@ -481,20 +481,166 @@ paths:
                 $ref: '#/components/schemas/HTTPValidationError'
 components:
   schemas:
-    EndpointRateLimitConfig:
+    ValidationError:
       properties:
-        max_tokens:
-          type: integer
-          title: Max Tokens
-        refill_rate_per_second:
-          type: number
-          title: Refill Rate Per Second
+        loc:
+          items:
+            anyOf:
+            - type: string
+            - type: integer
+          type: array
+          title: Location
+        msg:
+          type: string
+          title: Message
+        type:
+          type: string
+          title: Error Type
+        input:
+          title: Input
+        ctx:
+          type: object
+          title: Context
       type: object
       required:
-      - max_tokens
-      - refill_rate_per_second
-      title: EndpointRateLimitConfig
-      description: Rate limit configuration for a specific endpoint
+      - loc
+      - msg
+      - type
+      title: ValidationError
+    RateLimitOverrideResponse:
+      properties:
+        identifier:
+          type: string
+          title: Identifier
+        endpointLimits:
+          $ref: '#/components/schemas/EndpointLimitsOverride'
+        createdAt:
+          type: string
+          format: date-time
+          title: Createdat
+        createdBy:
+          type: string
+          title: Createdby
+        updatedAt:
+          anyOf:
+          - type: string
+            format: date-time
+          - type: 'null'
+          title: Updatedat
+        updatedBy:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Updatedby
+        note:
+          type: string
+          title: Note
+          default: ''
+      type: object
+      required:
+      - identifier
+      - endpointLimits
+      - createdAt
+      - createdBy
+      title: RateLimitOverrideResponse
+      description: Response containing rate limit override information
+    Body_create_video_internal_videos_post:
+      properties:
+        input_media_files:
+          anyOf:
+          - items:
+              type: string
+              contentMediaType: application/octet-stream
+            type: array
+          - type: 'null'
+          title: Input Media Files
+          description: 'Optional media files to seed into the generated video. Supported media: images, videos, and audio.'
+        input_media_file_descriptions:
+          anyOf:
+          - items:
+              type: string
+            type: array
+          - type: 'null'
+          title: Input Media File Descriptions
+          description: Optional descriptions aligned by index with input_media_files.
+        input_media_urls:
+          anyOf:
+          - items:
+              type: string
+            type: array
+          - type: 'null'
+          title: Input Media Urls
+          description: Optional HTTP(S) media URLs to seed into the generated video.
+        input_media_url_descriptions:
+          anyOf:
+          - items:
+              type: string
+            type: array
+          - type: 'null'
+          title: Input Media Url Descriptions
+          description: Optional descriptions aligned by index with input_media_urls.
+        prompt:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Prompt
+          description: Optional generation prompt.
+        video_style_id:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Video Style Id
+          description: Optional video style ID.
+      type: object
+      title: Body_create_video_internal_videos_post
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          type: array
+          title: Detail
+      type: object
+      title: HTTPValidationError
+    RateLimitOverrideUpdateRequest:
+      properties:
+        endpointLimits:
+          anyOf:
+          - $ref: '#/components/schemas/EndpointLimitsOverride'
+          - type: 'null'
+        note:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Note
+      type: object
+      title: RateLimitOverrideUpdateRequest
+      description: Request to update a rate limit override
+    EndpointLimitsOverride:
+      properties:
+        generation:
+          anyOf:
+          - $ref: '#/components/schemas/EndpointRateLimitConfig'
+          - type: 'null'
+        status:
+          anyOf:
+          - $ref: '#/components/schemas/EndpointRateLimitConfig'
+          - type: 'null'
+        videoCaptionsSubmit:
+          anyOf:
+          - $ref: '#/components/schemas/EndpointRateLimitConfig'
+          - type: 'null'
+        metaTextOverlaySubmit:
+          anyOf:
+          - $ref: '#/components/schemas/EndpointRateLimitConfig'
+          - type: 'null'
+        metaTextOverlayPoll:
+          anyOf:
+          - $ref: '#/components/schemas/EndpointRateLimitConfig'
+          - type: 'null'
+      type: object
+      title: EndpointLimitsOverride
+      description: Rate limit overrides for specific endpoints
     MAVideo:
       properties:
         id:
@@ -612,171 +758,6 @@ components:
         source_video_id: video_abc123def456
         status: PROCESSING
         video_id: video_xyz789
-    Body_create_video_internal_videos_post:
-      properties:
-        input_media_files:
-          anyOf:
-          - items:
-              type: string
-              contentMediaType: application/octet-stream
-            type: array
-          - type: 'null'
-          title: Input Media Files
-          description: 'Optional media files to seed into the generated video. Supported media: images, videos, and audio.'
-        input_media_file_descriptions:
-          anyOf:
-          - items:
-              type: string
-            type: array
-          - type: 'null'
-          title: Input Media File Descriptions
-          description: Optional descriptions aligned by index with input_media_files.
-        input_media_urls:
-          anyOf:
-          - items:
-              type: string
-            type: array
-          - type: 'null'
-          title: Input Media Urls
-          description: Optional HTTP(S) media URLs to seed into the generated video.
-        input_media_url_descriptions:
-          anyOf:
-          - items:
-              type: string
-            type: array
-          - type: 'null'
-          title: Input Media Url Descriptions
-          description: Optional descriptions aligned by index with input_media_urls.
-        prompt:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Prompt
-          description: Optional generation prompt.
-        video_style_id:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Video Style Id
-          description: Optional video style ID.
-      type: object
-      title: Body_create_video_internal_videos_post
-    CreateApiKeyRequest:
-      properties:
-        name:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Name
-          description: Optional friendly name for the key
-      type: object
-      title: CreateApiKeyRequest
-    ValidationError:
-      properties:
-        loc:
-          items:
-            anyOf:
-            - type: string
-            - type: integer
-          type: array
-          title: Location
-        msg:
-          type: string
-          title: Message
-        type:
-          type: string
-          title: Error Type
-        input:
-          title: Input
-        ctx:
-          type: object
-          title: Context
-      type: object
-      required:
-      - loc
-      - msg
-      - type
-      title: ValidationError
-    RateLimitOverrideResponse:
-      properties:
-        identifier:
-          type: string
-          title: Identifier
-        endpointLimits:
-          $ref: '#/components/schemas/EndpointLimitsOverride'
-        createdAt:
-          type: string
-          format: date-time
-          title: Createdat
-        createdBy:
-          type: string
-          title: Createdby
-        updatedAt:
-          anyOf:
-          - type: string
-            format: date-time
-          - type: 'null'
-          title: Updatedat
-        updatedBy:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Updatedby
-        note:
-          type: string
-          title: Note
-          default: ''
-      type: object
-      required:
-      - identifier
-      - endpointLimits
-      - createdAt
-      - createdBy
-      title: RateLimitOverrideResponse
-      description: Response containing rate limit override information
-    RateLimitOverrideUpdateRequest:
-      properties:
-        endpointLimits:
-          anyOf:
-          - $ref: '#/components/schemas/EndpointLimitsOverride'
-          - type: 'null'
-        note:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Note
-      type: object
-      title: RateLimitOverrideUpdateRequest
-      description: Request to update a rate limit override
-    HTTPValidationError:
-      properties:
-        detail:
-          items:
-            $ref: '#/components/schemas/ValidationError'
-          type: array
-          title: Detail
-      type: object
-      title: HTTPValidationError
-    MAVideoError:
-      properties:
-        code:
-          type: string
-          title: Code
-          description: Error code
-          examples:
-          - rate_limit_exceeded
-        message:
-          type: string
-          title: Message
-          description: Error message
-          examples:
-          - Rate limit exceeded. Please try again later.
-      type: object
-      required:
-      - code
-      - message
-      title: MAVideoError
-      description: Error payload that explains why generation failed, if applicable
     RateLimitOverrideCreateRequest:
       properties:
         identifier:
@@ -800,31 +781,36 @@ components:
       - endpointLimits
       title: RateLimitOverrideCreateRequest
       description: Request to create a rate limit override
-    EndpointLimitsOverride:
+    CreateApiKeyRequest:
       properties:
-        generation:
+        name:
           anyOf:
-          - $ref: '#/components/schemas/EndpointRateLimitConfig'
+          - type: string
           - type: 'null'
-        status:
-          anyOf:
-          - $ref: '#/components/schemas/EndpointRateLimitConfig'
-          - type: 'null'
-        videoCaptionsSubmit:
-          anyOf:
-          - $ref: '#/components/schemas/EndpointRateLimitConfig'
-          - type: 'null'
-        metaTextOverlaySubmit:
-          anyOf:
-          - $ref: '#/components/schemas/EndpointRateLimitConfig'
-          - type: 'null'
-        metaTextOverlayPoll:
-          anyOf:
-          - $ref: '#/components/schemas/EndpointRateLimitConfig'
-          - type: 'null'
+          title: Name
+          description: Optional friendly name for the key
       type: object
-      title: EndpointLimitsOverride
-      description: Rate limit overrides for specific endpoints
+      title: CreateApiKeyRequest
+    MAVideoError:
+      properties:
+        code:
+          type: string
+          title: Code
+          description: Error code
+          examples:
+          - rate_limit_exceeded
+        message:
+          type: string
+          title: Message
+          description: Error message
+          examples:
+          - Rate limit exceeded. Please try again later.
+      type: object
+      required:
+      - code
+      - message
+      title: MAVideoError
+      description: Error payload that explains why generation failed, if applicable
     CreateApiKeyResponse:
       properties:
         api_key:
@@ -873,3 +859,17 @@ components:
       - key_prefix
       - key_suffix
       title: ApiKeyInfo
+    EndpointRateLimitConfig:
+      properties:
+        max_tokens:
+          type: integer
+          title: Max Tokens
+        refill_rate_per_second:
+          type: number
+          title: Refill Rate Per Second
+      type: object
+      required:
+      - max_tokens
+      - refill_rate_per_second
+      title: EndpointRateLimitConfig
+      description: Rate limit configuration for a specific endpoint

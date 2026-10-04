@@ -76,32 +76,61 @@ paths:
                 $ref: '#/components/schemas/HTTPValidationError'
 components:
   schemas:
-    ValidationError:
+    MetaTextOverlay:
       properties:
-        loc:
+        id:
+          type: string
+          title: Id
+          description: Text overlay job ID
+        object:
+          type: string
+          const: text_overlay
+          title: Object
+          default: text_overlay
+        status:
+          type: string
+          enum:
+          - QUEUED
+          - PROCESSING
+          - COMPLETE
+          - FAILED
+          - CANCELLED
+          title: Status
+          description: Current state of the text overlay job
+        created_at:
+          type: integer
+          title: Created At
+          description: When the job was created (unix timestamp)
+        completed_at:
+          anyOf:
+          - type: integer
+          - type: 'null'
+          title: Completed At
+          description: When processing reached a terminal state (unix timestamp)
+        results:
           items:
-            anyOf:
-            - type: string
-            - type: integer
+            $ref: '#/components/schemas/MetaTextOverlayResult'
           type: array
-          title: Location
-        msg:
-          type: string
-          title: Message
-        type:
-          type: string
-          title: Error Type
-        input:
-          title: Input
-        ctx:
-          type: object
-          title: Context
+          title: Results
+          description: Ordered per-text render results for this job
+        error:
+          anyOf:
+          - $ref: '#/components/schemas/MAVideoError'
+          - type: 'null'
+          description: Error details if the job failed before itemized completion
       type: object
       required:
-      - loc
-      - msg
-      - type
-      title: ValidationError
+      - id
+      - status
+      - created_at
+      title: MetaTextOverlay
+      description: Represents a Meta text overlay job.
+      examples:
+      - created_at: 1730822400
+        id: d7f76ec6-2500-4d23-a2bc-648f4e904555
+        object: text_overlay
+        results: []
+        status: QUEUED
     Body_create_meta_text_overlay_v1_meta_text_overlays_post:
       properties:
         video:
@@ -160,26 +189,6 @@ components:
           title: Detail
       type: object
       title: HTTPValidationError
-    MAVideoError:
-      properties:
-        code:
-          type: string
-          title: Code
-          description: Error code
-          examples:
-          - rate_limit_exceeded
-        message:
-          type: string
-          title: Message
-          description: Error message
-          examples:
-          - Rate limit exceeded. Please try again later.
-      type: object
-      required:
-      - code
-      - message
-      title: MAVideoError
-      description: Error payload that explains why generation failed, if applicable
     MetaTextOverlayResult:
       properties:
         index:
@@ -215,58 +224,49 @@ components:
       - status
       title: MetaTextOverlayResult
       description: Per-text result for a Meta text overlay job.
-    MetaTextOverlay:
+    MAVideoError:
       properties:
-        id:
+        code:
           type: string
-          title: Id
-          description: Text overlay job ID
-        object:
+          title: Code
+          description: Error code
+          examples:
+          - rate_limit_exceeded
+        message:
           type: string
-          const: text_overlay
-          title: Object
-          default: text_overlay
-        status:
-          type: string
-          enum:
-          - QUEUED
-          - PROCESSING
-          - COMPLETE
-          - FAILED
-          - CANCELLED
-          title: Status
-          description: Current state of the text overlay job
-        created_at:
-          type: integer
-          title: Created At
-          description: When the job was created (unix timestamp)
-        completed_at:
-          anyOf:
-          - type: integer
-          - type: 'null'
-          title: Completed At
-          description: When processing reached a terminal state (unix timestamp)
-        results:
-          items:
-            $ref: '#/components/schemas/MetaTextOverlayResult'
-          type: array
-          title: Results
-          description: Ordered per-text render results for this job
-        error:
-          anyOf:
-          - $ref: '#/components/schemas/MAVideoError'
-          - type: 'null'
-          description: Error details if the job failed before itemized completion
+          title: Message
+          description: Error message
+          examples:
+          - Rate limit exceeded. Please try again later.
       type: object
       required:
-      - id
-      - status
-      - created_at
-      title: MetaTextOverlay
-      description: Represents a Meta text overlay job.
-      examples:
-      - created_at: 1730822400
-        id: d7f76ec6-2500-4d23-a2bc-648f4e904555
-        object: text_overlay
-        results: []
-        status: QUEUED
+      - code
+      - message
+      title: MAVideoError
+      description: Error payload that explains why generation failed, if applicable
+    ValidationError:
+      properties:
+        loc:
+          items:
+            anyOf:
+            - type: string
+            - type: integer
+          type: array
+          title: Location
+        msg:
+          type: string
+          title: Message
+        type:
+          type: string
+          title: Error Type
+        input:
+          title: Input
+        ctx:
+          type: object
+          title: Context
+      type: object
+      required:
+      - loc
+      - msg
+      - type
+      title: ValidationError
