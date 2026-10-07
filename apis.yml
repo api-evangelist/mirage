@@ -185,6 +185,8 @@ apis:
   - type: APIReference
     url: https://captions.ai/help/api-reference
 common:
+- type: Plans
+  url: plans/mirage-plans-pricing.yml
 - type: Website
   url: https://www.captions.ai/
 - type: Overlay
