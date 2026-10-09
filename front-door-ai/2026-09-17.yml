@@ -7,14 +7,17 @@ front_door_ai:
   probed_at: '2026-09-17'
   host: www.captions.ai
   final_host: captions.ai
-  ownership: inherited
+  ownership: own
   owner: mirage
   shares_host_with: null
-  inherited_from: captions.ai
+  inherited_from: null
+  alias_of: captions.ai
   verdict: scored
-  score: null
+  score: 24
+  band: 6
+  band_label: dominant
   host_score: 24
-  density: null
+  density: 26.67
   words: 900
   tiers:
     agentic: 3

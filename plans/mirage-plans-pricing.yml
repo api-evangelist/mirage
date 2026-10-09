@@ -1,0 +1,57 @@
+# Pricing transcribed from the provider's own page — see provenance. Numbers are quoted, not derived.
+generated: '2026-10-07'
+method: searched
+source: https://captions.ai/help/docs/api/pricing
+sources:
+- https://captions.ai/help/docs/api/pricing
+provenance:
+  tool: all/0-working/economics/harvest_pricing.py
+  run: 20261007T104522
+  grounding: every price_text was found verbatim in the fetched page text
+audience: developer-api
+pricing_basis: usage-other
+delivery:
+  delivery: managed
+  method: page
+  read: '2026-10-07'
+published: true
+note: Usage-based duration pricing for Mirage API; separate rate limiting page not included here.
+plan_count: 2
+currency: USD
+plans:
+- name: Add Captions
+  price_text: $0.15 per minute
+  price: 0.15
+  currency: USD
+  period: per-use
+  unit: minute of input video (rounded up to nearest minute)
+- name: Mirage Avatar X
+  price_text: $0.15 per second (6-second increments)
+  price: 0.15
+  currency: USD
+  period: per-use
+  unit: second of generated output video, billed in 6-second increments
+x-canonical:
+  generated: '2026-10-08'
+  vocabulary: all/0-working/economics/plans-canonical.yml
+  models:
+  - hybrid
+  units:
+  - compute
+  plans:
+  - name: Add Captions
+    access: other
+    model: hybrid
+    model_how: derived
+    units:
+    - compute
+    periods:
+    - other
+  - name: Mirage Avatar X
+    access: other
+    model: hybrid
+    model_how: derived
+    units:
+    - compute
+    periods:
+    - other
