@@ -76,110 +76,6 @@ paths:
                 $ref: '#/components/schemas/HTTPValidationError'
 components:
   schemas:
-    MetaTextOverlay:
-      properties:
-        id:
-          type: string
-          title: Id
-          description: Text overlay job ID
-        object:
-          type: string
-          const: text_overlay
-          title: Object
-          default: text_overlay
-        status:
-          type: string
-          enum:
-          - QUEUED
-          - PROCESSING
-          - COMPLETE
-          - FAILED
-          - CANCELLED
-          title: Status
-          description: Current state of the text overlay job
-        created_at:
-          type: integer
-          title: Created At
-          description: When the job was created (unix timestamp)
-        completed_at:
-          anyOf:
-          - type: integer
-          - type: 'null'
-          title: Completed At
-          description: When processing reached a terminal state (unix timestamp)
-        results:
-          items:
-            $ref: '#/components/schemas/MetaTextOverlayResult'
-          type: array
-          title: Results
-          description: Ordered per-text render results for this job
-        error:
-          anyOf:
-          - $ref: '#/components/schemas/MAVideoError'
-          - type: 'null'
-          description: Error details if the job failed before itemized completion
-      type: object
-      required:
-      - id
-      - status
-      - created_at
-      title: MetaTextOverlay
-      description: Represents a Meta text overlay job.
-      examples:
-      - created_at: 1730822400
-        id: d7f76ec6-2500-4d23-a2bc-648f4e904555
-        object: text_overlay
-        results: []
-        status: QUEUED
-    Body_create_meta_text_overlay_v1_meta_text_overlays_post:
-      properties:
-        video:
-          type: string
-          contentMediaType: application/octet-stream
-          title: Video
-          description: Source video file (MP4 or MOV). Upload once and render up to 4 related text variants against the same input video.
-        texts:
-          anyOf:
-          - items:
-              type: string
-            type: array
-          - type: 'null'
-          title: Texts
-          description: Ordered text variants to render as static overlays for the uploaded video (max 4).
-        items:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Items
-          description: Optional JSON array of item objects. Each item must contain text and may contain style.font, style.size, and style.color.
-        fonts:
-          anyOf:
-          - items:
-              type: string
-            type: array
-          - type: 'null'
-          title: Fonts
-          description: Optional ordered font overrides aligned by index with texts. Blank items mean auto-decide.
-        sizes:
-          anyOf:
-          - items:
-              type: string
-            type: array
-          - type: 'null'
-          title: Sizes
-          description: Optional ordered font size overrides in pixels aligned by index with texts. Blank items mean auto-decide.
-        colors:
-          anyOf:
-          - items:
-              type: string
-            type: array
-          - type: 'null'
-          title: Colors
-          description: Optional ordered text color overrides (#RRGGBB) aligned by index with texts. Blank items mean auto-decide.
-      type: object
-      required:
-      - video
-      title: Body_create_meta_text_overlay_v1_meta_text_overlays_post
     HTTPValidationError:
       properties:
         detail:
@@ -244,6 +140,110 @@ components:
       - message
       title: MAVideoError
       description: Error payload that explains why generation failed, if applicable
+    Body_create_meta_text_overlay_v1_meta_text_overlays_post:
+      properties:
+        video:
+          type: string
+          contentMediaType: application/octet-stream
+          title: Video
+          description: Source video file (MP4 or MOV). Upload once and render up to 4 related text variants against the same input video.
+        texts:
+          anyOf:
+          - items:
+              type: string
+            type: array
+          - type: 'null'
+          title: Texts
+          description: Ordered text variants to render as static overlays for the uploaded video (max 4).
+        items:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Items
+          description: Optional JSON array of item objects. Each item must contain text and may contain style.font, style.size, and style.color.
+        fonts:
+          anyOf:
+          - items:
+              type: string
+            type: array
+          - type: 'null'
+          title: Fonts
+          description: Optional ordered font overrides aligned by index with texts. Blank items mean auto-decide.
+        sizes:
+          anyOf:
+          - items:
+              type: string
+            type: array
+          - type: 'null'
+          title: Sizes
+          description: Optional ordered font size overrides in pixels aligned by index with texts. Blank items mean auto-decide.
+        colors:
+          anyOf:
+          - items:
+              type: string
+            type: array
+          - type: 'null'
+          title: Colors
+          description: Optional ordered text color overrides (#RRGGBB) aligned by index with texts. Blank items mean auto-decide.
+      type: object
+      required:
+      - video
+      title: Body_create_meta_text_overlay_v1_meta_text_overlays_post
+    MetaTextOverlay:
+      properties:
+        id:
+          type: string
+          title: Id
+          description: Text overlay job ID
+        object:
+          type: string
+          const: text_overlay
+          title: Object
+          default: text_overlay
+        status:
+          type: string
+          enum:
+          - QUEUED
+          - PROCESSING
+          - COMPLETE
+          - FAILED
+          - CANCELLED
+          title: Status
+          description: Current state of the text overlay job
+        created_at:
+          type: integer
+          title: Created At
+          description: When the job was created (unix timestamp)
+        completed_at:
+          anyOf:
+          - type: integer
+          - type: 'null'
+          title: Completed At
+          description: When processing reached a terminal state (unix timestamp)
+        results:
+          items:
+            $ref: '#/components/schemas/MetaTextOverlayResult'
+          type: array
+          title: Results
+          description: Ordered per-text render results for this job
+        error:
+          anyOf:
+          - $ref: '#/components/schemas/MAVideoError'
+          - type: 'null'
+          description: Error details if the job failed before itemized completion
+      type: object
+      required:
+      - id
+      - status
+      - created_at
+      title: MetaTextOverlay
+      description: Represents a Meta text overlay job.
+      examples:
+      - created_at: 1730822400
+        id: d7f76ec6-2500-4d23-a2bc-648f4e904555
+        object: text_overlay
+        results: []
+        status: QUEUED
     ValidationError:
       properties:
         loc:
